@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>쿠쿠뉴스 모바일</title>
+
+    <style type="text/css">
+        * {margin:0; padding:0;}
+        li {list-style: none;}
+        body, td {font-size:12px; font-family:'맑은 고딕','malgun gothic', dotum, '돋움', Sans-Serif; font-weight:normal; color:#000}
+        h1,h2,h3,h4,h5,h6,th,td,a {font-weight:normal}
+        table {border-collapse: collapse; border-spacing:0}
+        select {height: 24px; text-align-last:center}
+
+        #guide_header {padding: 10px 20px; border-bottom: 1px solid #ccc;}
+        #guide_header * { vertical-align: middle; }
+        #guide_header h1 {max-width:1240px; margin:0 auto; padding:0; font-size: 22px;font-weight: bold;line-height: 1;letter-spacing: -1px;}
+        #guide_body {position:relative; max-width:1240px; margin:0 auto; padding:0 20px}
+        #guide_footer {padding:25px 20px; background:#e5e5e5; box-sizing:border-box;}
+        #guide_footer p {display:block; max-width:1240px; margin:0 auto; font-size:12px;}
+
+        /* 정보영역 */
+        .info_list {margin:0;padding:0;}
+        .info_list li {position:relative; display:inline-block; padding-left:8px; margin-right: 15px; line-height: 18px;}
+        .info_list li:before {content:''; display:block; position:absolute; top:.6em; left:0; width:2px; height:2px; background: #666;}
+       
+        .note_info_wrap {padding: 30px 0 10px;}
+        .note_area:after {content:''; display: block; clear: both;}
+        .note_area:not(:first-child) {margin-top: 15px;}
+        .work-status {float: left;}
+        .work-status li {display: inline-block; margin-right:5px;}
+        .count_area {float: right; font-size:14px; font-weight:normal; color:#000;}
+        .count_area span[class^="page_"] { padding:0 5px; color: #9a0000; font-size: 14px; font-weight: bold;}
+
+        .status span {display: inline-block; padding: 2px 6px; border-radius: 3px; background: #6396ec; color: #fff; text-align: center; font-size: 12px;}
+        .status.ing span {background: #418e41;}
+        .status.complate span {background: #1a4da0;}
+        .status.modify span { background: #ce1818;}
+
+        /* 파일 목록 테이블 */
+        .guide_table {width:100%; margin-bottom:80px; border-bottom:2px solid #333}
+        .guide_table th:last-child{text-align: center}
+        .guide_table td {font-size:13px;}
+        .guide_table thead th {text-align:left; padding:6px 2px; border-bottom:2px solid #666; border-right:1px solid #333; border-left:1px solid #333; background:#333; font-weight:500; color:#fff}
+        .guide_table tbody tr:hover {background:#f4f4f4;}
+        .guide_table tbody td {text-align:left; padding:6px 2px; height: 20px;border-bottom:1px solid #ccc}
+        .guide_table .no {padding-right:5px; text-align:center}
+        .guide_table .depth1 {font-weight: bold;}
+
+        .btn_top_area {max-width:1240px; margin:0 auto; padding:0 0 25px; text-align:right; margin-top:-50px;position: fixed;bottom: 30px;right: 250px;}
+        .btn_top {display:inline-block; box-sizing:border-box; width:50px; height:50px; line-height:50px; border-radius: 100%; text-align:center; background:#333; color:#fff; text-decoration:none}
+    </style>
+
+    <script type="text/javascript" src="assets/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var guideTable = $(".guide_table"),
+                len = 0,
+                idx = 0;
+
+            guideTable.find("tbody tr").each(function(){
+                var idx =
+                    guideTable.find("thead th.condition").index(),
+                    $this = $(this).find("td").eq(idx),
+                    condition = $this.text();
+
+                $this.css('text-align','center');
+
+                switch(condition){
+                    case "진행중":
+                        $this.addClass('status ing').html("<span>진행</span>");
+                        break;
+                    case "완료":
+                        $this.addClass('status complate').html("<span>완료</span>");
+                        break;
+                    case "수정":
+                        $this.addClass('status complate modify').html("<span>수정</span>");
+                        break;
+                    default:
+                        $this.html("대기");
+                        break;
+                };
+
+                var conditions_first = $('#condition').find("option:first-child").text();
+
+                $('#condition').change(function(){
+                    var conditions = $(this).find("option:selected").text();
+                    $.each($this, function(){
+                        if($(this).text() == conditions) {
+                            $(this).parent().show();
+                        } else {
+                            $(this).parent().hide()
+                        }
+                        if(conditions == conditions_first) $this.parent().show();
+                    })
+                });
+            });
+
+            var $pageTotal =($('table.guide_table tbody tr').length)-1;
+            var $count_total =(($('table.guide_table tbody tr').find('td.complate')).length);
+            var $pagePercent =(($count_total/$pageTotal)*100).toFixed(2)+'%';
+
+            guideTable.each(function(i){
+                len = $(this).find("td.no").length;
+                $(this).prev().find(".page_total").text(len);
+                $(this).prev().find(".page_complt").text($count_total);
+                $(this).prev().find(".page_result").text($pagePercent);
+                $(this).find("td.no").each(function(n){
+                    $(this).text(n + 1);
+                });
+            });
+
+            function topMove(){
+                var $bodyW = $('body').innerWidth();
+                var $contW = $('#guide_body').outerWidth();
+                var $btnTopW = $('.btn_top_area').outerWidth() + 10;
+                if($contW < $bodyW) { $('.btn_top_area').css('right', ($bodyW-$contW)/2 - $btnTopW); }
+                if($bodyW - $contW <= $btnTopW * 2) { $('.btn_top_area').css('right','0'); }
+            }
+
+            topMove();
+            $(window).on("resize", topMove);
+
+            $('.btn_top_area').on('click', function(e){
+                e.preventDefault();
+                $("html, body").stop().animate({'scrollTop' : 0}, 500);
+            });
+         });
+    </script>
+</head>
+
+<body>
+    <div id="guide_header">
+        <h1>쿠쿠뉴스 모바일웹</h1>
+    </div>
+    <div id="guide_body">
+        <div class="contents">
+            <!-- 정보영역 -->
+            <div class="note_info_wrap">
+                <div class="note_area">
+                    <ul class="info_list">
+                        <li><strong>문서타입 :</strong> <span>HTML5</span></li>
+                        <li><strong>기본언어 :</strong> <span>ko</span></li>
+                        <li><strong>인코딩 :</strong> <span>UTF-8</span></li>
+                        <li><strong>작업 범위 :</strong> <span>MOBILE</span></li>
+                        <li><strong>브라우저 지원범위 :</strong> <span>IOS, AOS</span></li>
+                    </ul>
+                </div>
+                <div class="note_area">
+                    <ul class="info_list work-status">
+                        <li class="status"><strong>작업 대기 :</strong> <span>대기</span></li>
+                        <li class="status ing"><strong>작업 진행중 :</strong> <span>진행</span></li>
+                        <li class="status complate"><strong>작업 완료 :</strong> <span>완료</span></li>
+                        <li class="status modify"><strong>완료후 수정 :</strong> <span>수정</span></li>
+                    </ul>
+                    <div class="count_area">
+                        <ul class="info_list">
+                            <li>진척율 <span class="page_result"></span></li>
+                            <li>TOTAL <span class="page_complt"></span>/<span class="page_total"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- //정보영역 -->
+            <!-- 목록 테이블 -->
+            <table class="guide_table" id="">
+                <colgroup>
+                    <col style="width:3%">
+                    <col style="width:9%">
+                    <col style="width:9%">
+                    <col style="width:auto">
+                    <col style="width:10%">
+                    <col style="width:15%">
+                    <col style="width:8%">
+                    <col style="width:8%">
+                    <col style="width:5%">
+                    <col style="width:13%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col" class="no">NO</th>
+                        <th scope="col">1depth</th>
+                        <th scope="col">2depth</th>
+                        <th scope="col">3depth</th>
+                        <th scope="col">화면코드</th>
+                        <th scope="col" class="tac">퍼블리싱 보기</th>
+                        <th scope="col">완료일</th>
+                        <th scope="col">수정일</th>
+                        <th scope="col" class="condition">
+                            <select name="" id="condition">
+                                <option value="">현황전체</option>
+                                <option value="">진행</option>
+                                <option value="">완료</option>
+                                <option value="">수정</option>
+                                <option value="">대기</option>
+                            </select>
+                        </th>
+                        <th scope="col">비고</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- sample -->
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1">공통</td>
+                        <td class="depth2">레이아웃</td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/guide/layout.html"  target="_blank">layout.html</a></td>
+                        <td class="complete_date">-</td>
+                        <td class="modify_date"></td>
+                        <td class="status">진행</td>
+                        <td>* gnb 확인페이지</td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1"></td>
+                        <td class="depth2">컴포넌트</td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/guide/components.html"  target="_blank">components.html</a></td>
+                        <td class="complete_date">-</td>
+                        <td class="modify_date"></td>
+                        <td class="status">수정</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1"></td>
+                        <td class="depth2">팝업</td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/guide/popup.html"  target="_blank">popup.html</a></td>
+                        <td class="complete_date">-</td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+
+                    <!-- 메인 -->
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1">인트로</td>
+                        <td class="depth2"></td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">main.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <!-- 로그인 -->
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1">로그인</td>
+                        <td class="depth2"></td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/login/login.html"  target="_blank">login.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1">마이페이지 - 로그인후</td>
+                        <td class="depth2"></td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1">전체메뉴</td>
+                        <td class="depth2"></td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1">메인</td>
+                        <td class="depth2"></td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1"></td>
+                        <td class="depth2">상세</td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1"></td>
+                        <td class="depth2"></td>
+                        <td class="depth3">가짜뉴스 신고</td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1">긍정이슈</td>
+                        <td class="depth2"></td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1"></td>
+                        <td class="depth2">키워드 신청</td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1">1111</td>
+                        <td class="depth2"></td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1">설정</td>
+                        <td class="depth2">언론사 선택</td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1"></td>
+                        <td class="depth2">스크랩</td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1"></td>
+                        <td class="depth2">가짜뉴스</td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1">마이페이지</td>
+                        <td class="depth2">이용정보</td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1"></td>
+                        <td class="depth2">사용자정보</td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1"></td>
+                        <td class="depth2">1:1문의</td>
+                        <td class="depth3">쓰기</td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1"></td>
+                        <td class="depth2">1:1문의</td>
+                        <td class="depth3">답변보기</td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1"></td>
+                        <td class="depth2">법률상담</td>
+                        <td class="depth3">목록</td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1"></td>
+                        <td class="depth2"></td>
+                        <td class="depth3">상세</td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="no"></td>
+                        <td class="depth1">통합검색</td>
+                        <td class="depth2"></td>
+                        <td class="depth3"></td>
+                        <td class="page_code"></td>
+                        <td><a href="./html/1111/1111.html"  target="_blank">1111.html</a></td>
+                        <td class="complete_date"></td>
+                        <td class="modify_date"></td>
+                        <td class="status"></td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <!-- //목록 테이블 -->
+        </div>
+    </div>
+
+    <div id="guide_footer">
+        <P>Copyright &copy; 2020 HKL 글로벌. All rights reserved.</P>
+    </div>
+    
+    <div class="btn_top_area">
+        <a href="#top" class="btn_top" title="상단으로 이동">TOP</a>
+    </div>
+</body>
+</html>
