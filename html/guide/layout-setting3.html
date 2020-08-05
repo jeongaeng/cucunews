@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=yes">
+    <title>레이아웃</title>
+</head>
+<body>
+    <div class="wrap">
+        <!-- header -->
+        <header class="header-wrap">
+            <h1 class="logo">
+                <a href="/"><img src="../../assets/images/logo.png" alt="CUCU NEWS MEDIA DATA LAB"></a>
+            </h1>
+            <button type="button" class="btn-login">로그인</button>
+            <button type="button" class="btn-menu-open">메뉴 열기</button>
+            <!-- gnb -->
+            <nav class="menu-wrap">
+                <button type="button" class="btn-menu-close">메뉴 닫기</button>
+                <div class="menu-head">
+                    <div class="menu-logo">
+                        <img src="../../assets/images/logo.png" alt="CUCU NEWS MEDIA DATA LAB">
+                    </div>
+                    <div class="menu-state">
+                        로그인이 필요해요!
+                    </div>
+                </div>
+                <div class="menu-util">
+                    <ul>
+                        <li><a href="#">검색하기</a></li>
+                        <li><a href="#">마이페이지</a></li>
+                        <li><a href="#">설정</a></li>
+                    </ul>
+                </div>
+                <div class="menu-body">
+                    <h2>주메뉴</h2>
+                    <ul class="depth1">
+                        <li>
+                            <a href="#">긍정이슈 <span class="num">0</span></a>
+                            <ul class="depth2">
+                                <li><a href="#">신문기사</a></li>
+                                <li><a href="#">커뮤니티</a></li>
+                                <li><a href="#">SNS</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">부정이슈 <span class="num">53</span></a>
+                            <ul class="depth2">
+                                <li><a href="#">신문기사</a></li>
+                                <li><a href="#">커뮤니티</a></li>
+                                <li><a href="#">SNS</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">홍보이슈 <span class="num">23</span></a>
+                            <ul class="depth2">
+                                <li><a href="#">보도자료</a></li>
+                                <li><a href="#">바이럴자료</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">경쟁사이슈 <span class="num">0</span></a>
+                            <ul class="depth2">
+                                <li><a href="#">긍정이슈</a></li>
+                                <li><a href="#">부정이슈</a></li>
+                                <li><a href="#">보도자료</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">설정</a>
+                            <ul class="depth2 setting">
+                                <li><a href="#">언론사선택</a></li>
+                                <li><a href="#">스크랩</a></li>
+                                <li><a href="#">가짜뉴스</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu-footer">
+                    <button type="button">키워드신청</button>
+                </div>
+            </nav>
+        </header>
+        <!-- //header -->
+    
+        <!-- container -->
+        <main class="container">
+            <nav class="issue-tab">
+                <ul>
+                    <li><a href="#">긍정이슈</a></li>
+                    <li><a href="#">부정이슈</a></li>
+                    <li><a href="#">홍보이슈</a></li>
+                    <li><a href="#">경쟁사이슈</a></li>
+                </ul>
+            </nav>
+            <section>
+                <h1>설정</h1>
+                <div class="sub-tabmenu">
+                    <ul>
+                        <li><a href="#">언론사선택</a></li>
+                        <li><a href="#">스크랩</a></li>
+                        <li><a href="#">가짜뉴스</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li>전체<span>1</span></li>
+                        <li>언론사<span>0</span></li>
+                        <li>커뮤니티<span>1</span></li>
+                        <li>SNS소셜<span>0</span></li>
+                    </ul>
+                </div>
+                <ul class="scrap-check-list">
+                    <li>
+                        <div class="issue-wrap">
+                            <span class="num">3</span>
+                            <span class="issue-category competition">경쟁사이슈</span>
+                        </div>
+                        <p class="issue-title">삼서일본 선박 두동강 사건 진짜네요...</p>
+                        <div class="issue-info">
+                            <span class="press">더쿠</span>
+                            <span>등록일 <span>2020.03.23 15:20</span></span>
+                            <span class="num">12</span>
+                        </div>
+                        <button type="button" class="btn-del">삭제</button>
+                    </li>
+                    <li>
+                        <div class="issue-wrap">
+                            <span class="num">3</span>
+                            <span class="issue-category promotion">홍보이슈</span>
+                        </div>
+                        <p class="issue-title">삼성전자의 주식이 김혜수에 의해 조작된다는 찌라시 주도자 검거</p>
+                        <div class="issue-info">
+                            <span class="press">더쿠</span>
+                            <span>등록일 <span>2020.03.23 15:20</span></span>
+                            <span class="num">12</span>
+                        </div>
+                        <button type="button" class="btn-del">삭제</button>
+                    </li>
+                    <li>
+                        <div class="issue-wrap">
+                            <span class="num">3</span>
+                            <span class="issue-category positive">긍정이슈</span>
+                        </div>
+                        <p class="issue-title">우한폐렴'이라 부르지도 말라니… '문재인 지나치다.중국발 우한 폐렴(신종 코로나바..</p>
+                        <div class="issue-info">
+                            <span class="press">더쿠</span>
+                            <span>등록일 <span>2020.03.23 15:20</span></span>
+                            <span class="num">12</span>
+                        </div>
+                        <button type="button" class="btn-del">삭제</button>
+                    </li>
+                </ul>
+                <div class="pagination">
+                    <button type="button" class="btn-prev"><span>이전</span></button>
+                    <ul>
+                        <li class="current" title="현재 페이지"><a href="javascript:void(0)">1</a></li>
+                        <li><a href="javascript:void(0)">2</a></li>
+                        <li><a href="javascript:void(0)">3</a></li>
+                        <li><a href="javascript:void(0)">4</a></li>
+                        <li><a href="javascript:void(0)">5</a></li>
+                        <li><a href="javascript:void(0)">6</a></li>
+                        <li><a href="javascript:void(0)">7</a></li>
+                        <li><a href="javascript:void(0)">8</a></li>
+                        <li><a href="javascript:void(0)">9</a></li>
+                        <li><a href="javascript:void(0)">10</a></li>
+                    </ul>
+                    <button type="button" class="btn-next"><span>다음</span></button>
+                </div>
+            </section>
+        </main>
+        <!-- //container -->
+
+        <!-- footer -->
+        <footer class="footer-wrap">
+            <div class="footer-inner-wrap">
+                <div class="footer-logo"><img src="../../assets/images/logo-hklg.png" alt="HKLG"></div>
+                <p class="footer-company">(주)에이치케이엘 글로벌</p>
+                <p class="footer-address">경기도 수원시 영통구 매영로 345번길 111(영통동) ㈜경기방송 신관 5층 우편번호 16703</p>
+                <p class="footer-contact">Tel : 031-203-0905  Fax : 031-202-9909</p>
+                <p class="footer-copy">Copyright &copy; 2020  HKL 글로벌 All rights reserved.</p>
+
+                <ul class="sns-wrap">
+                    <li><a href="#"><img src="../../assets/images/icon-sns-facebook.png" alt="페이스북"></a></li>
+                    <li><a href="#"><img src="../../assets/images/icon-sns-facebook.png" alt="트위터"></a></li>
+                    <li><a href="#"><img src="../../assets/images/icon-sns-facebook.png" alt="카카오"></a></li>
+                </ul>
+            </div>
+        </footer>
+        <!-- //footer -->
+    </div>
+</body>
+</html>

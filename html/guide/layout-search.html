@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=yes">
+    <title>레이아웃</title>
+</head>
+<body>
+    <div class="wrap">
+        <!-- header -->
+        <header class="header-wrap">
+            <h1 class="logo">
+                <a href="/"><img src="../../assets/images/logo.png" alt="CUCU NEWS MEDIA DATA LAB"></a>
+            </h1>
+            <button type="button" class="btn-login">로그인</button>
+            <button type="button" class="btn-login">로그아웃</button>
+            <button type="button" class="btn-menu-open">메뉴 열기</button>
+            <!-- gnb -->
+            <nav class="menu-wrap">
+                <button type="button" class="btn-menu-close">메뉴 닫기</button>
+                <div class="menu-head">
+                    <div class="menu-logo">
+                        <img src="../../assets/images/logo.png" alt="CUCU NEWS MEDIA DATA LAB">
+                    </div>
+                    <div class="menu-state">
+                        로그인이 필요해요!
+                    </div>
+                </div>
+                <div class="menu-util">
+                    <ul>
+                        <li><a href="#">검색하기</a></li>
+                        <li><a href="#">마이페이지</a></li>
+                        <li><a href="#">설정</a></li>
+                    </ul>
+                </div>
+                <div class="menu-body">
+                    <h2>주메뉴</h2>
+                    <ul class="depth1">
+                        <li>
+                            <a href="#">긍정이슈 <span class="num">0</span></a>
+                            <ul class="depth2">
+                                <li><a href="#">신문기사</a></li>
+                                <li><a href="#">커뮤니티</a></li>
+                                <li><a href="#">SNS</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">부정이슈 <span class="num">53</span></a>
+                            <ul class="depth2">
+                                <li><a href="#">신문기사</a></li>
+                                <li><a href="#">커뮤니티</a></li>
+                                <li><a href="#">SNS</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">홍보이슈 <span class="num">23</span></a>
+                            <ul class="depth2">
+                                <li><a href="#">보도자료</a></li>
+                                <li><a href="#">바이럴자료</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">경쟁사이슈 <span class="num">0</span></a>
+                            <ul class="depth2">
+                                <li><a href="#">긍정이슈</a></li>
+                                <li><a href="#">부정이슈</a></li>
+                                <li><a href="#">보도자료</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">설정</a>
+                            <ul class="depth2 setting">
+                                <li><a href="#">언론사선택</a></li>
+                                <li><a href="#">스크랩</a></li>
+                                <li><a href="#">가짜뉴스</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu-footer">
+                    <button type="button">키워드신청</button>
+                </div>
+            </nav>
+        </header>
+        <!-- //header -->
+    
+        <!-- container -->
+        <main class="container">
+            <section class="">
+                <div class="search-wrap">
+                    <label for=""></label>
+                    <input type="text" name="" value="식중독균" title="검색어 입력">
+                    <button type="button" class="btn-search">검색</button>
+                </div>
+                
+                <h1>통합검색</h1>
+                <div class="search-result-wrap">
+                    <div>
+                        <h2>
+                            <a href="#">기사</a>
+                            <span>12345</span>
+                        </h2>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <span class="media-logo"></span>
+                                    <span class="title">삼성전자 작년 영업익 전년대비로 52.9</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="media-logo"></span>
+                                    <span class="title">박정호 SK 텔레콤 사장(57  ·사진)이 인</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="media-logo">한겨레</span>
+                                    <span class="title">삼성전자 작년 영업익 전년대비로 52.9</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="media-logo">한겨레</span>
+                                    <span class="title">삼성전자 작년 영업익 전년대비로 52.9 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="media-logo">한겨레</span>
+                                    <span class="title">삼성전자 작년 영업익 전년대비로 52.9 </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>커뮤니티 <span>12345</span></h2>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <span class="media-logo">한겨레</span>
+                                    <span></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>SNS <span>12345</span></h2>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <span class="media-logo">한겨레</span>
+                                    <span></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 결과 없을 경우 -->
+                <div class="search-no-result-wrap">
+                    <p><strong>'식중독균'</strong>에 대한 검색결과가 없습니다.</p>
+                    <ul class="list-bullet">
+                        <li>단어의 철자가 정확한지 확인해 주세요.</li>
+                        <li>검색어의 단어 수를 줄이거나, 다른 검색어로 검색해 보세요.</li>
+                        <li>보다 일반적인 검색어로 다시 검색해 보세요.</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        <!-- //container -->
+
+        <!-- footer -->
+        <footer class="footer-wrap">
+            <div class="footer-inner-wrap">
+                <div class="footer-logo"><img src="../../assets/images/logo-hklg.png" alt="HKLG"></div>
+                <p class="footer-company">(주)에이치케이엘 글로벌</p>
+                <p class="footer-address">경기도 수원시 영통구 매영로 345번길 111(영통동) ㈜경기방송 신관 5층 우편번호 16703</p>
+                <p class="footer-contact">Tel : 031-203-0905  Fax : 031-202-9909</p>
+                <p class="footer-copy">Copyright &copy; 2020  HKL 글로벌 All rights reserved.</p>
+
+                <ul class="sns-wrap">
+                    <li><a href="#"><img src="../../assets/images/icon-sns-facebook.png" alt="페이스북"></a></li>
+                    <li><a href="#"><img src="../../assets/images/icon-sns-facebook.png" alt="트위터"></a></li>
+                    <li><a href="#"><img src="../../assets/images/icon-sns-facebook.png" alt="카카오"></a></li>
+                </ul>
+            </div>
+        </footer>
+        <!-- //footer -->
+    </div>
+</body>
+</html>
