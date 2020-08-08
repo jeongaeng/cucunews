@@ -99,106 +99,64 @@
         <main class="container">
             <nav id="lnb" class="lnb">
                 <ul>
-                    <li class="positive"><a href="./layout-test1.html" class="active">긍정이슈</a></li>
+                    <li class="positive"><a href="./layout-test1.html">긍정이슈</a></li>
                     <li class="negative"><a href="./layout-test2.html">부정이슈</a></li>
                     <li class="promotion"><a href="./layout-test3.html">홍보이슈</a></li>
-                    <li class="competition"><a href="./layout-test4.html">경쟁사이슈</a></li>
+                    <li class="competition on"><a href="./layout-test4.html">경쟁사이슈</a></li>
                 </ul>
             </nav>
-            <section class="section-setting">
-                <h1 class="section-title">설 정</h1>
+            <section class="section-mypage">
+                <h1 class="section-title">마이페이지</h1>
                 <div class="tabmenu">
                     <ul>
                         <li><a href="#">언론사선택</a></li>
-                        <li><a href="#">스크랩</a></li>
-                        <li class="active"><a href="#">가짜뉴스</a></li>
+                        <li class="active"><a href="#">사용자정보</a></li>
+                        <li><a href="#">1:1문의</a></li>
+                        <li><a href="#">법률상담</a></li>
                     </ul>
                 </div>
-                
-                <div class="scrap-statistics">
-                    <ul>
-                        <li class="active"><a href="#">전체 <span class="statistics">13</span></a></li>
-                        <li><a href="#">언론사 <span class="statistics">2</span></a></li>
-                        <li><a href="#">커뮤니티 <span class="statistics">11</span></a></li>
-                        <li><a href="#">SNS소셜 <span class="statistics">0</span></a></li>
-                    </ul>
+                <div class="table-container">
+                    <table>
+                        <caption>사용자정보</caption>
+                        <colgroup>
+                            <col style="width:32%">
+                            <col style="width:auto">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th scope="row">업체명/담당부서</th>
+                                <td>사공필 과장</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">담당자연락처</th>
+                                <td>
+                                    <div class="input-wrap">
+                                        <input type="text" name="" value="" title="담당자 연락처 입력">
+                                    </div>
+                                    <div class="input-checkbox2">
+                                        <input type="checkbox" id="smsAgree" name="saveId" value="">
+                                        <label for="smsAgree"><span>SMS 수신동의</span></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">담당자 메일</th>
+                                <td>
+                                    <div class="input-wrap">
+                                        <input type="text" name="" value="" title="담당자 메일 입력">
+                                    </div>
+                                    <div class="input-checkbox2">
+                                        <input type="checkbox" id="smsAgree2" name="saveId" value="">
+                                        <label for="smsAgree2"><span>SMS 수신동의</span></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="scrap-list-wrap">
-                    <ul class="scrap-list">
-                        <li>
-                            <div class="issue-top-area">
-                                <span class="no">4</span>
-                                <span class="category negative">부정이슈</span>
-                            </div>
-                            <p class="issue-title">
-                                <a href="#">삼서일본 선박 두동강 사건 진짜네요 삼서일본 선박 두동강 사건 진짜네요 삼서일본 선박 두동강 사건 진짜네요</a>
-                            </p>
-                            <div class="issue-bottom-area">
-                                <span class="press">더쿠</span>
-                                <span>등록일 <span>2020.03.23 15:20</span></span>
-                                <span class="num">12</span>
-                            </div>
-                            <button type="button" class="btn-del"><span class="blind">삭제</span></button>
-                        </li>
-                        <li>
-                            <div class="issue-top-area">
-                                <span class="no">3</span>
-                                <span class="category competition">경쟁사이슈</span>
-                            </div>
-                            <p class="issue-title">
-                                <a href="#">삼서일본 선박 두동강 사건 진짜네요</a>
-                            </p>
-                            <div class="issue-bottom-area">
-                                <span class="press">더쿠</span>
-                                <span>등록일 <span>2020.03.23 15:20</span></span>
-                                <span class="num">12</span>
-                            </div>
-                            <button type="button" class="btn-del"><span class="blind">삭제</span></button>
-                        </li>
-                        <li>
-                            <div class="issue-top-area">
-                                <span class="no">2</span>
-                                <span class="category promotion">홍보이슈</span>
-                            </div>
-                            <p class="issue-title">
-                                <a href="#">삼성전자의 주식이 김혜수에 의해 조작된다는 찌라시 주도자 검거</a>
-                            </p>
-                            
-                            <div class="issue-bottom-area">
-                                <span class="press">더쿠</span>
-                                <span>등록일 <span>2020.03.23 15:20</span></span>
-                                <span class="num">120</span>
-                            </div>
-                            <button type="button" class="btn-del"><span class="blind">삭제</span></button>
-                        </li>
-                        <li>
-                            <div class="issue-top-area">
-                                <span class="no">1</span>
-                                <span class="category positive">긍정이슈</span>
-                            </div>
-                            <p class="issue-title">
-                                <a href="#">우한폐렴'이라 부르지도 말라니… '문재인 지나치다.중국발 우한 폐렴(신종 코로나바</a>
-                            </p>
-                            
-                            <div class="issue-bottom-area">
-                                <span class="press">더쿠</span>
-                                <span class="date">등록일 <span>2020.03.23 15:20</span></span>
-                                <span class="num">12</span>
-                            </div>
-                            <button type="button" class="btn-del"><span class="blind">삭제</span></button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="pagination">
-                    <button type="button" class="btn-prev"><span>이전</span></button>
-                    <ul>
-                        <li class="current" title="현재 페이지"><a href="javascript:void(0)">1</a></li>
-                        <li><a href="javascript:void(0)">2</a></li>
-                        <li><a href="javascript:void(0)">3</a></li>
-                        <li><a href="javascript:void(0)">4</a></li>
-                        <li><a href="javascript:void(0)">5</a></li>
-                    </ul>
-                    <button type="button" class="btn-next"><span>다음</span></button>
+                <div class="btn-wrap">
+                    <button type="button" class="btn secondary btn-cancel">취 소</button>
+                    <button type="button" class="btn primary btn-confirm">확 인</button>
                 </div>
             </section>
         </main>
