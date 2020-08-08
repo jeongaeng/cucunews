@@ -2,46 +2,62 @@
 <html lang="ko">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=yes">
-    <title>레이아웃</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>마이페이지 메뉴</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
+    <script src="../../assets/js/jquery-3.5.1.min.js"></script>
+    <script src="../../assets/js/common.js"></script>
 </head>
 <body>
     <div class="wrap">
-        <!-- container -->
+        <!-- header -->
+        <header id="header" class="header-wrap">
+            <h1 class="logo">
+                <a href="#">
+                    <img src="../../assets/images/logo.png" alt="CUCU NEWS MEDIA DATA LAB">
+                </a>
+            </h1>
+            <div class="h-btn-right">
+                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+            </div>
+        </header>
+        <!-- //header -->
         <main class="container">
-            <div class="login-wrap">
-                <div class="login_box">
-                    <form>
-                        <fieldset>
-                            <legend>로그인 영역</legend>
-                            <dl class="input-wrap">
-                                <dt><label for="loginId">아이디</label></dt>
-                                <dd><input type="text" id="loginId" name="userId" value="" placeholder="ID"></dd>
-                            </dl>
-                            <dl class="input-wrap">
-                                <dt><label for="loginPwd">비밀번호</label></dt>
-                                <dd><input type="password" id="loginPwd" name="loginPwd" value="" placeholder="PASSWORD"></dd>
-                            </dl>
+            <section class="section-login">
+                <h1 class="section-title">로그인</h1>
+                <form>
+                    <fieldset>
+                        <legend>로그인 영역</legend>
+                        <div class="login-wrap">
+                            <div class="input-wrap">
+                                <label for="loginId" class="blind">아이디</label>
+                                <input type="text" id="loginId" name="userId" value="" placeholder="ID">
+                            </div>
+                            <div class="input-wrap">
+                                <label for="loginPwd" class="blind">비밀번호</label>
+                                <input type="password" id="loginPwd" name="loginPwd" value="" placeholder="PASSWORD">
+                            </div>
                             <div class="btn-wrap">
-                                <button type="submit" class="btn-login">확인</button>
+                                <button type="submit" class="btn primary btn-login">확 인</button>
                             </div>
                             <div class="login-setting">
-                                <div class="input-check">
-                                    <input type="checkbox" id="saveAutoLogin" name="saveAutoLogin" value="">
-                                    <label for="saveAutoLogin">로그인 상태 유지</label>
+                                <div class="input-checkbox-login">
+                                    <input type="checkbox" id="saveAutoLogin" name="saveAutoLogin" value="" checked>
+                                    <label for="saveAutoLogin"><span>로그인 상태 유지</span></label>
                                 </div>
-                                <div class="input-check">
+                                <div class="input-checkbox-login">
                                     <input type="checkbox" id="saveId" name="saveId" value="">
-                                    <label for="saveId">아이디저장</label>
+                                    <label for="saveId"><span>아이디저장</span></label>
                                 </div>
                             </ul>
-                            <p class="login-notice">회원가입/아이디/비번찾기는 PC버젼을 이용해 주세요.</p>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <p class="login-notice">회원가입/아이디/비번찾기는 PC버젼을 이용해 주세요.</p>
+            </section>
         </main>
-        <!-- //container -->
     </div>
 </body>
 </html>

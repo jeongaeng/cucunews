@@ -73,7 +73,7 @@ a:active, a:hover, a:focus { text-decoration:underline; }
 html,
 body { 
     color: #666;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Noto Sans KR', '맑은 고딕', Malgun Gothic, sans-serif;
     /* font-family: '맑은 고딕', Malgun Gothic, Arial, Sans-serif; */
     font-size: 14px;
     font-weight: 400;
