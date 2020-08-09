@@ -2,10 +2,9 @@
 <html lang="ko">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=yes">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>레이아웃</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>가짜뉴스 신고</title>
     <link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="../../assets/css/slick.css">
     <script src="../../assets/js/jquery-3.5.1.min.js"></script>
@@ -23,8 +22,8 @@
             </h1>
             <div class="h-btn-left">
                 <!-- <button type="button" class="btn-login" onclick="location.href='layout-my.html'"><span class="blind">로그인</span></button> -->
-                <button type="button" class="btn-login" onclick="location.href='layout-login.html'"><span class="blind">로그인</span></button>
-                <button type="button" class="btn-logout is-login"><span class="blind">로그아웃</span></button>
+                <!-- <button type="button" class="btn-login" onclick="location.href='layout-login.html'"><span class="blind">로그인</span></button> -->
+                <button type="button" class="btn-logout"><span class="blind">로그아웃</span></button>
             </div>
             <div class="h-btn-right">
                 <button type="button" class="btn-menu-open"><span class="blind">메뉴 열기</span></button>
@@ -99,36 +98,53 @@
     
         <!-- container -->
         <main class="container">
-            <nav id="lnb" class="lnb">
-                <ul>
-                    <li class="positive"><a href="./layout-test1.html">긍정이슈</a></li>
-                    <li class="negative"><a href="./layout-test2.html">부정이슈</a></li>
-                    <li class="promotion"><a href="./layout-test3.html">홍보이슈</a></li>
-                    <li class="competition"><a href="./layout-test4.html" class="active">경쟁사이슈</a></li>
-                </ul>
-            </nav>
-            
-            <section class="section-page">
-                4444페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
+            <section class="section-keyword">
+                <h1 class="section-title">키워드 추가 신청</h1>
+                <form>
+                    <fieldset>
+                        <legend>키워드 추가 신청</legend>
+                        <div class="keyword-form-wrap">
+                            <h2 class="section-sub-title">추가 키워드 등록</h2>
+                            <p class="keyword-form-desc">키워드 하위 스텝 추가시 “&gt;” 로 적용하시고 항목 추가시 “;” 로 적용하세요.</p>
+                            <ul class="keyword-list">
+                                <li>
+                                    <span class="tit">주제어 01</span>
+                                    <div class="input-wrap">
+                                        <input type="text" name="" value="" placeholder="공공기관 > 마스크">
+                                        <button class="btn-del"><span class="blind">삭제</span></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="tit">주제어 02</span>
+                                    <div class="input-wrap">
+                                        <input type="text" name="" value="" placeholder="">
+                                        <button class="btn-del"><span class="blind">삭제</span></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="tit">주제어 03</span>
+                                    <div class="input-wrap">
+                                        <input type="text" name="" value="" placeholder="">
+                                        <button class="btn-del"><span class="blind">삭제</span></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="tit">주제어 04</span>
+                                    <div class="input-wrap">
+                                        <input type="text" name="" value="" placeholder="">
+                                        <button class="btn-del"><span class="blind">삭제</span></button>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="btn-area">
+                                <button type="button" class="btn-add"><span class="blind">추가하기</span></button>
+                            </div>
+                        </div>
+                        <div class="btn-wrap">
+                            <button type="submit" class="btn primary btn-submit">확인</button>
+                        </div>
+                    </fieldset>
+                </form>
             </section>
         </main>
         <!-- //container -->
