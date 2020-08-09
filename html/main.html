@@ -12,30 +12,25 @@
     <script src="../assets/js/common.js"></script>
 </head>
 <body>
-    <div class="wrap is-personal-main">
+    <div class="wrap is-personal-main"> <!-- [참고] 메인일 경우 .is-personal-main 추가 -->
         <!-- header -->
         <header id="header" class="header-wrap">
             <h1 class="logo">
-                <a href="#">
-                    <img src="../assets/images/logo.png" alt="CUCU NEWS MEDIA DATA LAB">
-                </a>
+                <a href="#"><img src="../../assets/images/logo.png" alt="CUCU NEWS MEDIA DATA LAB"></a>
             </h1>
-            <div class="h-btn-left">
-                <!-- <button type="button" class="btn-login" onclick="location.href='layout-my.html'"><span class="blind">로그인</span></button> -->
-                <!-- <button type="button" class="btn-login" onclick="location.href='layout-login.html'"><span class="blind">로그인</span></button> -->
-                <button type="button" class="btn-logout"><span class="blind">로그아웃</span></button>
+            <div class="left-area">
+                <button type="button" class="btn-logout is-login"><span class="blind">로그아웃</span></button>
             </div>
-            <div class="h-btn-right"> 
-                <button type="button" class="btn-menu-open"><span class="blind">메뉴 열기</span></button>
-                <!-- <button type="button" class="btn-close"><span class="blind">닫기</span></button> -->
+            <div class="right-area">
+                <button type="button" class="btn-menu-open"><span class="blind">메뉴열기</span></button>
             </div>
         </header>
         <!-- //header -->
         <!-- gnb -->
-        <nav id="global-user-navi" class="menu-wrap">
+        <nav id="gnb" class="menu-wrap">
             <div class="menu-head">
                 <div class="menu-logo">
-                    <a href="#"><img src="../assets/images/logo.png" alt="CUCU NEWS MEDIA DATA LAB"></a>
+                    <a href="#"><img src="../../assets/images/logo.png" alt="CUCU NEWS MEDIA DATA LAB"></a>
                 </div>
                 <p class="state-info">로그인이 필요해요!</p>
             </div>
@@ -46,7 +41,7 @@
                     <li class="setting"><a href="#">설정</a></li>
                 </ul>
             </div>
-            <div class="menu-body gnb">
+            <div class="menu-body">
                 <h2 class="blind">주메뉴</h2>
                 <ul class="depth1">
                     <li>
@@ -89,17 +84,19 @@
                         </ul>
                     </li>
                 </ul>
-            </div>
-            <div class="menu-footer">
-                <button type="button" class="btn primary">키워드신청</button>
+                <div class="btn-wrap">
+                    <a href="#" class="btn primary">키워드신청</a>
+                </div>
             </div>
             <button type="button" class="btn-menu-close"><span class="blind">메뉴 닫기</span></button>
         </nav>
+        <!-- //gnb -->
     
         <!-- container -->
         <main class="container main">
             <div class="main-container">
                 <div class="user-info-wrap">
+                    <!-- [참고] 멤버 등급에 따라 골드(gold) / 실버(sliver) / 브론즈(bronze) 클래스 추가 -->
                     <i class="badge gold"></i>
                     <span>삼성전자님</span>
                 </div>
@@ -133,7 +130,7 @@
                         <a href="#"><em>60</em>개사 구독중</a>
                     </div>
                 </div>
-                <div class="issue-graph-wrap">
+                <div class="issue-content-wrap">
                     <div class="issue-content">
                         <p class="title">긍정이슈</p>
                         <p class="period">19/12/01~20/01/01</p>
@@ -151,8 +148,8 @@
                             <img src="../assets/images/@dummy/@graph.png" alt="그래프">
 
                             <!-- 결과 없을 경우 -->
-                            <p class="no-data">추출된 데이터가 없습니다.</p>
                         </div>
+                        <p class="no-data">추출된 데이터가 없습니다.</p>
                         <a href="#" class="btn-detail"><span class="blind">상세보기</span></a>
                     </div>
                     <div class="issue-content">
@@ -161,8 +158,8 @@
                         <div class="graph-wrap">
                             <!-- [참고] 더미이미지 입니다. 이미지 제거하고, 차트 넣어주세요. -->
                             <img src="../assets/images/@dummy/@graph.png" alt="그래프">
-                            <p class="no-data">추출된 데이터가 없습니다.</p>
                         </div>
+                        <p class="no-data">추출된 데이터가 없습니다.</p>
                         <a href="#" class="btn-detail"><span class="blind">상세보기</span></a>
                     </div>
                     <div class="issue-content">
@@ -171,151 +168,155 @@
                         <div class="graph-wrap">
                             <!-- [참고] 더미이미지 입니다. 이미지 제거하고, 차트 넣어주세요. -->
                             <img src="../assets/images/@dummy/@graph.png" alt="그래프">
-                            <p class="no-data">추출된 데이터가 없습니다.</p>
                         </div>
+                        <p class="no-data">추출된 데이터가 없습니다.</p>
                         <a href="#" class="btn-detail"><span class="blind">상세보기</span></a>
                     </div>
                 </div>
                 <div class="btn-wrap">
                     <a href="#" class="btn primary">키워드 신청</a>
                 </div>
-                <div class="article-list-container">
-                    <div>
-                        <ul class="article-list">
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">삼성전자 작년 영업익 전년대비로 52.9% 감소 삼성전자 작년 영업익 전년대비로 52.9% 감소···</p>
-                                    <span class="article-info negative"><strong>네이버</strong> &gt; 블로그 &gt; 삼성전자주식인</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">박정호 SK 텔레콤 사장(57  ·사진)이 인공지능(AI)분야</p>
-                                    <span class="article-info positive"><strong>국민일보</strong> &gt; 경제 &gt; 대기업</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">신규 검사장 명단에 '삼성 출신'의 변호사 포함 추미애</p>
-                                    <span class="article-info positive"><strong>아이뉴스24</strong> &gt; 경제 &gt; 재계</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">삼성, ‘갤럭시S20’·‘갤럭시폴드2’가 내달 11일 </p>
-                                    <span class="article-info promotion"><strong>YTN</strong> &gt; 분야별뉴스 &gt; 속보 &gt; 전자</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">내달 11일 샌프란시스코서 공개</p>
-                                    <span class="article-info competition"><strong>네이버</strong> &gt; 분야별뉴스 &gt; 속보 &gt; 전자</span>
-                                </a>
-                            </li>
-                        </ul>
+                <div class="news-data-container">
+                    <!-- 뉴스 슬라이드 -->
+                    <div class="news-slide-wrap">
+                        <div class="slide-inner">
+                            <ul class="news-list">
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">삼성전자 작년 영업익 전년대비로 52.9% 감소 삼성전자 작년 영업익 전년대비로 52.9% 감소···</p>
+                                        <span class="article-info negative"><strong>네이버</strong> &gt; 블로그 &gt; 삼성전자주식인</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">박정호 SK 텔레콤 사장(57  ·사진)이 인공지능(AI)분야</p>
+                                        <span class="article-info positive"><strong>국민일보</strong> &gt; 경제 &gt; 대기업</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">신규 검사장 명단에 '삼성 출신'의 변호사 포함 추미애</p>
+                                        <span class="article-info positive"><strong>아이뉴스24</strong> &gt; 경제 &gt; 재계</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">삼성, ‘갤럭시S20’·‘갤럭시폴드2’가 내달 11일 </p>
+                                        <span class="article-info promotion"><strong>YTN</strong> &gt; 분야별뉴스 &gt; 속보 &gt; 전자</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">내달 11일 샌프란시스코서 공개</p>
+                                        <span class="article-info competition"><strong>네이버</strong> &gt; 분야별뉴스 &gt; 속보 &gt; 전자</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="slide-inner">
+                            <ul class="news-list">
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">삼성전자 작년 영업익 전년대비로 52.9% 감소 삼성전자 작년 영업익 전년대비로 52.9% 감소···</p>
+                                        <span class="article-info negative"><strong>네이버</strong> &gt; 블로그 &gt; 삼성전자주식인</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">박정호 SK 텔레콤 사장(57  ·사진)이 인공지능(AI)분야</p>
+                                        <span class="article-info positive"><strong>국민일보</strong> &gt; 경제 &gt; 대기업</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">신규 검사장 명단에 '삼성 출신'의 변호사 포함 추미애</p>
+                                        <span class="article-info positive"><strong>아이뉴스24</strong> &gt; 경제 &gt; 재계</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">삼성, ‘갤럭시S20’·‘갤럭시폴드2’가 내달 11일 </p>
+                                        <span class="article-info promotion"><strong>YTN</strong> &gt; 분야별뉴스 &gt; 속보 &gt; 전자</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">내달 11일 샌프란시스코서 공개</p>
+                                        <span class="article-info competition"><strong>네이버</strong> &gt; 분야별뉴스 &gt; 속보 &gt; 전자</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="slide-inner">
+                            <ul class="news-list">
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">삼성전자 작년 영업익 전년대비로 52.9% 감소 삼성전자 작년 영업익 전년대비로 52.9% 감소···</p>
+                                        <span class="article-info negative"><strong>네이버</strong> &gt; 블로그 &gt; 삼성전자주식인</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">박정호 SK 텔레콤 사장(57  ·사진)이 인공지능(AI)분야</p>
+                                        <span class="article-info positive"><strong>국민일보</strong> &gt; 경제 &gt; 대기업</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">신규 검사장 명단에 '삼성 출신'의 변호사 포함 추미애</p>
+                                        <span class="article-info positive"><strong>아이뉴스24</strong> &gt; 경제 &gt; 재계</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">삼성, ‘갤럭시S20’·‘갤럭시폴드2’가 내달 11일 </p>
+                                        <span class="article-info promotion"><strong>YTN</strong> &gt; 분야별뉴스 &gt; 속보 &gt; 전자</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">내달 11일 샌프란시스코서 공개</p>
+                                        <span class="article-info competition"><strong>네이버</strong> &gt; 분야별뉴스 &gt; 속보 &gt; 전자</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="slide-inner">
+                            <ul class="news-list">
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">삼성전자 작년 영업익 전년대비로 52.9% 감소 삼성전자 작년 영업익 전년대비로 52.9% 감소···</p>
+                                        <span class="article-info negative"><strong>네이버</strong> &gt; 블로그 &gt; 삼성전자주식인</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">박정호 SK 텔레콤 사장(57  ·사진)이 인공지능(AI)분야</p>
+                                        <span class="article-info positive"><strong>국민일보</strong> &gt; 경제 &gt; 대기업</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">신규 검사장 명단에 '삼성 출신'의 변호사 포함 추미애</p>
+                                        <span class="article-info positive"><strong>아이뉴스24</strong> &gt; 경제 &gt; 재계</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">삼성, ‘갤럭시S20’·‘갤럭시폴드2’가 내달 11일 </p>
+                                        <span class="article-info promotion"><strong>YTN</strong> &gt; 분야별뉴스 &gt; 속보 &gt; 전자</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p class="article-title">내달 11일 샌프란시스코서 공개</p>
+                                        <span class="article-info competition"><strong>네이버</strong> &gt; 분야별뉴스 &gt; 속보 &gt; 전자</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div>
-                        <ul class="article-list">
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">삼성전자 작년 영업익 전년대비로 52.9% 감소 삼성전자 작년 영업익 전년대비로 52.9% 감소···</p>
-                                    <span class="article-info negative"><strong>네이버</strong> &gt; 블로그 &gt; 삼성전자주식인</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">박정호 SK 텔레콤 사장(57  ·사진)이 인공지능(AI)분야</p>
-                                    <span class="article-info positive"><strong>국민일보</strong> &gt; 경제 &gt; 대기업</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">신규 검사장 명단에 '삼성 출신'의 변호사 포함 추미애</p>
-                                    <span class="article-info positive"><strong>아이뉴스24</strong> &gt; 경제 &gt; 재계</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">삼성, ‘갤럭시S20’·‘갤럭시폴드2’가 내달 11일 </p>
-                                    <span class="article-info promotion"><strong>YTN</strong> &gt; 분야별뉴스 &gt; 속보 &gt; 전자</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">내달 11일 샌프란시스코서 공개</p>
-                                    <span class="article-info competition"><strong>네이버</strong> &gt; 분야별뉴스 &gt; 속보 &gt; 전자</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <ul class="article-list">
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">삼성전자 작년 영업익 전년대비로 52.9% 감소 삼성전자 작년 영업익 전년대비로 52.9% 감소···</p>
-                                    <span class="article-info negative"><strong>네이버</strong> &gt; 블로그 &gt; 삼성전자주식인</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">박정호 SK 텔레콤 사장(57  ·사진)이 인공지능(AI)분야</p>
-                                    <span class="article-info positive"><strong>국민일보</strong> &gt; 경제 &gt; 대기업</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">신규 검사장 명단에 '삼성 출신'의 변호사 포함 추미애</p>
-                                    <span class="article-info positive"><strong>아이뉴스24</strong> &gt; 경제 &gt; 재계</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">삼성, ‘갤럭시S20’·‘갤럭시폴드2’가 내달 11일 </p>
-                                    <span class="article-info promotion"><strong>YTN</strong> &gt; 분야별뉴스 &gt; 속보 &gt; 전자</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">내달 11일 샌프란시스코서 공개</p>
-                                    <span class="article-info competition"><strong>네이버</strong> &gt; 분야별뉴스 &gt; 속보 &gt; 전자</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <ul class="article-list">
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">삼성전자 작년 영업익 전년대비로 52.9% 감소 삼성전자 작년 영업익 전년대비로 52.9% 감소···</p>
-                                    <span class="article-info negative"><strong>네이버</strong> &gt; 블로그 &gt; 삼성전자주식인</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">박정호 SK 텔레콤 사장(57  ·사진)이 인공지능(AI)분야</p>
-                                    <span class="article-info positive"><strong>국민일보</strong> &gt; 경제 &gt; 대기업</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">신규 검사장 명단에 '삼성 출신'의 변호사 포함 추미애</p>
-                                    <span class="article-info positive"><strong>아이뉴스24</strong> &gt; 경제 &gt; 재계</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">삼성, ‘갤럭시S20’·‘갤럭시폴드2’가 내달 11일 </p>
-                                    <span class="article-info promotion"><strong>YTN</strong> &gt; 분야별뉴스 &gt; 속보 &gt; 전자</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="article-title">내달 11일 샌프란시스코서 공개</p>
-                                    <span class="article-info competition"><strong>네이버</strong> &gt; 분야별뉴스 &gt; 속보 &gt; 전자</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+
                 </div>
             </div>
         </main>

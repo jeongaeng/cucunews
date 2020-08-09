@@ -2,45 +2,45 @@
 
 /* Noto Sans KR */
 @font-face {
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 100;
+    font-family:'Noto Sans KR';
+    font-style:normal;
+    font-weight:100;
     src:
     url('../fonts/NotoSansKR-Thin.woff2') format('woff2'),
     url('../fonts/NotoSansKR-Thin.woff') format('woff'),
     url('../fonts/NotoSansKR-Thin.otf') format('opentype');
 }
 @font-face {
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 300;
+    font-family:'Noto Sans KR';
+    font-style:normal;
+    font-weight:300;
     src:
     url('../fonts/NotoSansKR-Light.woff2') format('woff2'),
     url('../fonts/NotoSansKR-Light.woff') format('woff'),
     url('../fonts/NotoSansKR-Light.otf') format('opentype');
 }
 @font-face {
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 400;
+    font-family:'Noto Sans KR';
+    font-style:normal;
+    font-weight:400;
     src:
     url('../fonts/NotoSansKR-Regular.woff2') format('woff2'),
     url('../fonts/NotoSansKR-Regular.woff') format('woff'),
     url('../fonts/NotoSansKR-Regular.otf') format('opentype');
 }
 @font-face {
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 500;
+    font-family:'Noto Sans KR';
+    font-style:normal;
+    font-weight:500;
     src:
     url('../fonts/NotoSansKR-Medium.woff2') format('woff2'),
     url('../fonts/NotoSansKR-Medium.woff') format('woff'),
     url('../fonts/NotoSansKR-Medium.otf') format('opentype');
 }
 @font-face {
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 700;
+    font-family:'Noto Sans KR';
+    font-style:normal;
+    font-weight:700;
     src:
     url('../fonts/NotoSansKR-Bold.woff2') format('woff2'),
     url('../fonts/NotoSansKR-Bold.woff') format('woff'),
@@ -49,17 +49,17 @@
 
 
 /* reset */
-*, *::before, *::after { box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box;  }
-html, body { height:100%; -webkit-text-size-adjust:none; font-family: '맑은 고딕', Malgun Gothic, 'Apple SD Gothic Neo', Arial, Sans-serif; font-size:13px; }
+*, *::before, *::after { box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -o-box-sizing:border-box;  }
+html, body { height:100%; -webkit-text-size-adjust:none; font-family:'Noto Sans KR', '맑은 고딕', Malgun Gothic, 'Apple SD Gothic Neo', Arial, Sans-serif; }
 body, input, select, button, textarea, h1, h2, h3, h4, h5, h6, table { font:inherit; color:inherit; }
 html, body, div, form, input, select, button, textarea, legend, fieldset, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, blockquote, address, p, th, td, caption { margin:0; padding:0; }
 ol, ul, li { list-style:none; }
-img, fieldset { vertical-align:middle; border:0 none; }
-i, em, address { font-style: normal; }
-input, select, textarea { vertical-align:middle; resize:none; }
+img, fieldset { vertical-align:middle; border:0; }
+i, em, address { font-style:normal; }
+input, button, select, textarea { outline:0; border:0; background:none; box-shadow:0 0 0 0; vertical-align:middle; appearance:none; -webkit-appearance:none; resize:none; }
 input[type=text], input[type=password], input[type=submit], input[type=search], input[type=email], input[type=tel], textarea { -webkit-appearance:none; }
 button { border:0 none; background:transparent; cursor:pointer; }
-button::-moz-focus-inner { border: 0; }
+button::-moz-focus-inner { border:0; }
 hr { display:none; }
 legend, .hide { position:absolute; left:-9999px; }
 table caption { width:0; height:0; visibility:hidden; text-indent:-9999px; font-size:0; line-height:0; }
@@ -67,14 +67,14 @@ table { border-collapse:collapse; border-spacing:0; }
 header, footer, section, article, aside, nav, main, hgroup, details, menu, figure, figcaption { display:block; }
 
 a { color:inherit; text-decoration:none; }
-a:active, a:hover, a:focus { text-decoration:underline; }
+a:active, a:hover, a:focus { text-decoration:none; }
 
 
 html,
 body { 
-    color: #666;
-    font-family: 'Noto Sans KR', '맑은 고딕', Malgun Gothic, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: -.025em;
+    color:#666;
+    font-family:'Noto Sans KR', '맑은 고딕', Malgun Gothic, 'Apple SD Gothic Neo', Arial, Sans-serif;
+    font-size:14px;
+    font-weight:400;
+    letter-spacing:-.025em;
 }

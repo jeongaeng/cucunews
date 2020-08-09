@@ -16,26 +16,21 @@
         <!-- header -->
         <header id="header" class="header-wrap">
             <h1 class="logo">
-                <a href="#">
-                    <img src="../assets/images/logo.png" alt="CUCU NEWS MEDIA DATA LAB">
-                </a>
+                <a href="#"><img src="../../assets/images/logo.png" alt="CUCU NEWS MEDIA DATA LAB"></a>
             </h1>
-            <div class="h-btn-left">
-                <!-- <button type="button" class="btn-login" onclick="location.href='layout-my.html'"><span class="blind">로그인</span></button> -->
-                <button type="button" class="btn-login" onclick="location.href='layout-login.html'"><span class="blind">로그인</span></button>
+            <div class="left-area">
                 <button type="button" class="btn-logout is-login"><span class="blind">로그아웃</span></button>
             </div>
-            <div class="h-btn-right">
-                <button type="button" class="btn-menu-open"><span class="blind">메뉴 열기</span></button>
-                <!-- <button type="button" class="btn-close"><span class="blind">닫기</span></button> -->
+            <div class="right-area">
+                <button type="button" class="btn-menu-open"><span class="blind">메뉴열기</span></button>
             </div>
         </header>
         <!-- //header -->
         <!-- gnb -->
-        <nav id="global-user-navi" class="menu-wrap">
+        <nav id="gnb" class="menu-wrap">
             <div class="menu-head">
                 <div class="menu-logo">
-                    <a href="#"><img src="../assets/images/logo.png" alt="CUCU NEWS MEDIA DATA LAB"></a>
+                    <a href="#"><img src="../../assets/images/logo.png" alt="CUCU NEWS MEDIA DATA LAB"></a>
                 </div>
                 <p class="state-info">로그인이 필요해요!</p>
             </div>
@@ -46,7 +41,7 @@
                     <li class="setting"><a href="#">설정</a></li>
                 </ul>
             </div>
-            <div class="menu-body gnb">
+            <div class="menu-body">
                 <h2 class="blind">주메뉴</h2>
                 <ul class="depth1">
                     <li>
@@ -89,25 +84,26 @@
                         </ul>
                     </li>
                 </ul>
-            </div>
-            <div class="menu-footer">
-                <button type="button" class="btn primary">키워드신청</button>
+                <div class="btn-wrap">
+                    <a href="#" class="btn primary">키워드신청</a>
+                </div>
             </div>
             <button type="button" class="btn-menu-close"><span class="blind">메뉴 닫기</span></button>
         </nav>
+        <!-- //gnb -->
     
         <!-- container -->
         <main class="container">
             <nav id="lnb" class="lnb">
                 <ul>
-                    <li class="positive"><a href="./layout-test1.html" class="active">긍정이슈</a></li>
-                    <li class="negative"><a href="./layout-test2.html">부정이슈</a></li>
-                    <li class="promotion"><a href="./layout-test3.html">홍보이슈</a></li>
-                    <li class="competition"><a href="./layout-test4.html">경쟁사이슈</a></li>
+                    <li class="positive"><a href="#" class="active">긍정이슈</a></li>
+                    <li class="negative"><a href="#">부정이슈</a></li>
+                    <li class="promotion"><a href="#">홍보이슈</a></li>
+                    <li class="competition"><a href="#">경쟁사이슈</a></li>
                 </ul>
             </nav>
             <section class="section-setting">
-                <h1 class="section-title">설 정</h1>
+                <h1 class="section-title"><i class="setting"></i>설 정</h1>
                 <div class="tabmenu">
                     <ul>
                         <li><a href="#">언론사선택</a></li>
@@ -127,14 +123,14 @@
                 <div class="scrap-list-wrap">
                     <ul class="scrap-list">
                         <li>
-                            <div class="issue-top-area">
+                            <div class="top-info">
                                 <span class="no">4</span>
                                 <span class="category negative">부정이슈</span>
                             </div>
-                            <p class="issue-title">
+                            <p class="title">
                                 <a href="#">삼서일본 선박 두동강 사건 진짜네요 삼서일본 선박 두동강 사건 진짜네요 삼서일본 선박 두동강 사건 진짜네요</a>
                             </p>
-                            <div class="issue-bottom-area">
+                            <div class="bottom-info">
                                 <span class="press">더쿠</span>
                                 <span>등록일 <span>2020.03.23 15:20</span></span>
                                 <span class="num">12</span>
@@ -142,14 +138,14 @@
                             <button type="button" class="btn-del"><span class="blind">삭제</span></button>
                         </li>
                         <li>
-                            <div class="issue-top-area">
+                            <div class="top-info">
                                 <span class="no">3</span>
                                 <span class="category competition">경쟁사이슈</span>
                             </div>
-                            <p class="issue-title">
+                            <p class="title">
                                 <a href="#">삼서일본 선박 두동강 사건 진짜네요</a>
                             </p>
-                            <div class="issue-bottom-area">
+                            <div class="bottom-info">
                                 <span class="press">더쿠</span>
                                 <span>등록일 <span>2020.03.23 15:20</span></span>
                                 <span class="num">12</span>
@@ -157,15 +153,15 @@
                             <button type="button" class="btn-del"><span class="blind">삭제</span></button>
                         </li>
                         <li>
-                            <div class="issue-top-area">
+                            <div class="top-info">
                                 <span class="no">2</span>
                                 <span class="category promotion">홍보이슈</span>
                             </div>
-                            <p class="issue-title">
+                            <p class="title">
                                 <a href="#">삼성전자의 주식이 김혜수에 의해 조작된다는 찌라시 주도자 검거</a>
                             </p>
                             
-                            <div class="issue-bottom-area">
+                            <div class="bottom-info">
                                 <span class="press">더쿠</span>
                                 <span>등록일 <span>2020.03.23 15:20</span></span>
                                 <span class="num">120</span>
@@ -173,15 +169,15 @@
                             <button type="button" class="btn-del"><span class="blind">삭제</span></button>
                         </li>
                         <li>
-                            <div class="issue-top-area">
+                            <div class="top-info">
                                 <span class="no">1</span>
                                 <span class="category positive">긍정이슈</span>
                             </div>
-                            <p class="issue-title">
+                            <p class="title">
                                 <a href="#">우한폐렴'이라 부르지도 말라니… '문재인 지나치다.중국발 우한 폐렴(신종 코로나바</a>
                             </p>
                             
-                            <div class="issue-bottom-area">
+                            <div class="bottom-info">
                                 <span class="press">더쿠</span>
                                 <span class="date">등록일 <span>2020.03.23 15:20</span></span>
                                 <span class="num">12</span>
