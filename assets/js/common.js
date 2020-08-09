@@ -69,4 +69,15 @@ function initLNB() {
 $(document).ready(function() {
 	initGnb() //GNB
 	initLNB() //LNB
+
+	// 메인 비쥬얼 슬라이드
+	$('.visual-wrap').slick({
+		autoplay: true,
+		autoplaySpeed: 3000,
+	});
+
+	// 이슈리스트 슬라이드
+	$('.article-list-container').slick({
+		dots: true,
+	});
 })

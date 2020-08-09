@@ -51,7 +51,7 @@
 /* reset */
 *, *::before, *::after { box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box;  }
 html, body { height:100%; -webkit-text-size-adjust:none; font-family: '맑은 고딕', Malgun Gothic, Arial, Sans-serif; font-size:13px; }
-body, input, select, button, textarea, h1, h2, h3, h4, h5, h6, table { line-height:1.5; font:inherit; color:inherit; }
+body, input, select, button, textarea, h1, h2, h3, h4, h5, h6, table { font:inherit; color:inherit; }
 html, body, div, form, input, select, button, textarea, legend, fieldset, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, blockquote, address, p, th, td, caption { margin:0; padding:0; }
 ol, ul, li { list-style:none; }
 img, fieldset { vertical-align:middle; border:0 none; }

@@ -104,31 +104,62 @@
                     <li class="positive"><a href="./layout-test1.html">긍정이슈</a></li>
                     <li class="negative"><a href="./layout-test2.html">부정이슈</a></li>
                     <li class="promotion"><a href="./layout-test3.html">홍보이슈</a></li>
-                    <li class="competition"><a href="./layout-test4.html" class="active">경쟁사이슈</a></li>
+                    <li class="competition on"><a href="./layout-test4.html">경쟁사이슈</a></li>
                 </ul>
             </nav>
-            
-            <section class="section-page">
-                4444페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
-                페이지 컨텐츠<br>
+            <section class="section-mypage">
+                <h1 class="section-title">마이페이지</h1>
+                <div class="tabmenu">
+                    <ul>
+                        <li><a href="#">언론사선택</a></li>
+                        <li class="active"><a href="#">사용자정보</a></li>
+                        <li><a href="#">1:1문의</a></li>
+                        <li><a href="#">법률상담</a></li>
+                    </ul>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <caption>사용자정보</caption>
+                        <colgroup>
+                            <col style="width:32%">
+                            <col style="width:auto">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th scope="row">업체명/담당부서</th>
+                                <td>사공필 과장</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">담당자연락처</th>
+                                <td>
+                                    <div class="input-wrap">
+                                        <input type="text" name="" value="" title="담당자 연락처 입력">
+                                    </div>
+                                    <div class="input-checkbox2">
+                                        <input type="checkbox" id="smsAgree" name="" value="">
+                                        <label for="smsAgree"><span>SMS 수신동의</span></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">담당자 메일</th>
+                                <td>
+                                    <div class="input-wrap">
+                                        <input type="text" name="" value="" title="담당자 메일 입력">
+                                    </div>
+                                    <div class="input-checkbox2">
+                                        <input type="checkbox" id="emailAgree" name="" value="">
+                                        <label for="emailAgree"><span>뉴스레터와 공지메일 수신동의</span></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="btn-wrap">
+                    <button type="button" class="btn secondary btn-cancel">취 소</button>
+                    <button type="button" class="btn primary btn-confirm">확 인</button>
+                </div>
             </section>
         </main>
         <!-- //container -->
