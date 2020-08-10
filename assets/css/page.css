@@ -2,21 +2,21 @@
 
 /* 로그인 */
 .section-login { margin:0 -22px; padding:30px 0 45px; }
-.section-login .section-title { margin:0 22px 12px; padding-left:20px; background:url('../images/icon-login-title.png') no-repeat left center; background-size:13px 17px; color:#272727; font-size:19px; line-height:1.1; }
-.section-login .login-wrap { padding:16px 22px; background-color:#e5eef6; }
-.section-login .login-wrap .input-wrap { height:38px; }
-.section-login .login-wrap .input-wrap input { height:100%; border-color:#666; background-color:#fff; line-height:36px; }
-.section-login .login-wrap .input-wrap + .input-wrap { margin-top:4px; }
-.section-login .login-wrap .btn-wrap { margin:6px 0 10px}
+.section-login .section-title { margin:0 22px 12px; padding-left:20px; background:url('../images/icon-login-title.png') no-repeat left center; background-size:13px 17px; color:#272727; font-size:22px; line-height:1.1; }
+.section-login .login-wrap { padding:20px 22px; background-color:#e5eef6; }
+.section-login .login-wrap .input-wrap { height:45px; }
+.section-login .login-wrap .input-wrap input { height:100%; border-color:#666; background-color:#fff; line-height:43px; font-size:16px; }
+.section-login .login-wrap .input-wrap + .input-wrap { margin-top:8px; }
+.section-login .login-wrap .btn-wrap { margin:10px 0 12px}
 .section-login .login-setting { text-align:center; }
-.section-login .login-setting .input-checkbox-login { display:inline-block; }
-.section-login .login-setting .input-checkbox-login input[type='checkbox'] { display:none; }
-.section-login .login-setting .input-checkbox-login input[type='checkbox'] + label { color:#333; font-size:15px; line-height:22px; cursor:pointer; vertical-align:1px; }
+.section-login .login-setting .input-checkbox-login { display:inline-block; position:relative; }
+.section-login .login-setting .input-checkbox-login input[type='checkbox'] { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+.section-login .login-setting .input-checkbox-login input[type='checkbox'] + label { color:#333; font-size:16px; line-height:22px; cursor:pointer; vertical-align:1px; }
 .section-login .login-setting .input-checkbox-login input[type='checkbox'] + label::before { content:''; display:inline-block; width:22px; height:22px; background:url('../images/icon-login-checkbox.png') no-repeat 0 0; background-size:100%; vertical-align:top; }
 .section-login .login-setting .input-checkbox-login input[type='checkbox'] + label span { display:inline-block; margin-left:6px; vertical-align:middle; line-height:22px; vertical-align:top; }
 .section-login .login-setting .input-checkbox-login input[type='checkbox']:checked + label::before { background:url('../images/icon-login-checkbox-checked.png') no-repeat 0 0; background-size:100%; }
 .section-login .login-setting .input-checkbox-login:first-child { margin-right:24px; }
-.section-login .login-notice { margin-top:30px; padding:0 22px; color:#666; font-size:13px;  }
+.section-login .login-notice { margin-top:30px; padding:0 22px; color:#666; font-size:14px;  }
 
 /* 마이 메뉴 */
 .section-my-menu .btn-menu-close { width:60px; height:60px; position:absolute; top:0; right:0; background:url('../images/icon-menu-close.png') no-repeat right 22px bottom 15px; background-size:31px 29px; }
@@ -63,8 +63,8 @@
 .section-setting .section-title i.setting { display:inline-block; width:22px; height:22px; margin-right:8px; background:url('../images/icon-setting.png') no-repeat left center; background-size:100%; vertical-align: -2px;}
 .section-setting .preess-info-wrap { display:flex; align-items:flex-start; justify-content:space-between; margin-top:20px; border-bottom:1px solid #000; padding-bottom:10px; margin-bottom:10px; }
 .section-setting .preess-info-wrap .info-text { width:70%; color:#000; font-size:14px; line-height:14px; }
-.section-setting .input-checkbox { display:inline-block; vertical-align:1px; line-height:14px;}
-.section-setting .input-checkbox input[type='checkbox'] { display:none; }
+.section-setting .input-checkbox { display:inline-block; vertical-align:1px; line-height:14px; position:relative; }
+.section-setting .input-checkbox input[type='checkbox'] { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
 .section-setting .input-checkbox input[type='checkbox'] + label { color:#000; font-size:14px; line-height:14px; cursor:pointer; }
 .section-setting .input-checkbox input[type='checkbox'] + label::before { content:''; display:inline-block; width:12px; height:12px; background:url('../images/icon-checkbox2.png') no-repeat 0 0; background-size:100%; vertical-align:middle; }
 .section-setting .input-checkbox input[type='checkbox'] + label span { display:inline-block; margin-left:6px; vertical-align:middle; }
@@ -74,7 +74,7 @@
 .section-setting .press-check-list li:nth-child(4n+1) { margin-left:0; }
 .section-setting .press-check-list li:nth-child(4) ~ li { margin-top:5px; }
 .section-setting .input-checkbox-press { position:relative; }
-.section-setting .input-checkbox-press input { display:none; }
+.section-setting .input-checkbox-press input { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
 .section-setting .input-checkbox-press label { display:block; width:100%; height:75px; padding:18px 6px; border:1px solid #b7b7b7; text-align:center; overflow:hidden; }
 .section-setting .input-checkbox-press label:after { content:''; position:absolute; top:3px; right:3px; display:block; width:15px; height:15px; background:url('../images/icon-checkbox-press.png') no-repeat 0 0;background-size:100%; }
 .section-setting .input-checkbox-press input[type='checkbox']:checked + label { border-color:#000; }
@@ -147,6 +147,18 @@
 .section-mypage .btn-wrap { display:flex; margin-top:15px; }
 .section-mypage .btn-wrap .btn + .btn { margin-left:5px; }
 .section-mypage .btn-wrap .btn-cancel { color:#aaa; }
+.section-mypage .my-qna-wrap { margin-top:50px; }
+.section-mypage .my-qna-wrap .sub-title { color:#000; font-size:18px; font-weight:700; }
+.section-mypage .my-qna-list { margin-top:12px; border-top:1px solid #000; border-bottom:1px solid #000; }
+.section-mypage .my-qna-list li { padding:18px 12px; }
+.section-mypage .my-qna-list li:not(:first-child) { border-top:1px solid #888; }
+.section-mypage .my-qna-list .top-area span { display:inline-block; color:#333; font-size:14px; margin-right:10px; }
+.section-mypage .my-qna-list .top-area .no,
+.section-mypage .my-qna-list .top-area .type { color:#000; }
+.section-mypage .my-qna-list .title { margin-top:4px; color:#000; font-size:16px; }
+.section-mypage .my-qna-list .bottom-area { margin-top:8px; color:#333; font-size:13px; }
+.section-mypage .my-qna-list .bottom-area .date { color:#333; font-size:13px; }
+.section-mypage .my-qna-list .btn-answer { display:inline-block; height:24px; line-height:22px; margin-left:10px; padding:0 10px; border:1px solid #b7b7b7; color:#000; font-size:13px; }
 
 /* 이슈 상세 */
 .section-detail { padding:0 0 45px; }
@@ -290,13 +302,6 @@
 
 
 /* 이슈별 리스트 */
-
-
-
-
-
-
-
 
 
 
