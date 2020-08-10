@@ -173,7 +173,6 @@
 .section-detail .comment-wrap .comment-list li .user { width:65px; word-break:break-all; }
 .section-detail .comment-wrap .comment-list li .comment-area { width:calc(100% - 65px); }
 
-
 /* 메인 */
 .main-container { padding:0 22px 0; background-color:#ebebeb; }
 .main-container .btn-wrap { margin-top:25px; }
@@ -300,19 +299,16 @@
 
 
 
+
+
+
+
+
+
 /* 저해상도 디바이스 대응 */
 @media screen and (max-width: 320px) {
     .section-setting .btn-wrap .btn-save { width:100px; }
 }
-
-
-
-
-
-
-
-
-
 
 
 
