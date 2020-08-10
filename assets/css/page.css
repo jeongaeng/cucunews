@@ -121,7 +121,6 @@
 .section-search .search-wrap .btn-search { position:absolute; top:0; right:22px; width:40px; height:40px; border:0; background:url('../images/icon-search.png') no-repeat right 5px center; background-size:21px 22px; }
 .section-search .result-wrap { margin-top:30px; }
 .section-search .no-result-wrap { margin-top:30px; }
-
 .section-search .search-news-wrap:not(:first-child) { margin-top:25px; padding-top:25px; border-top:1px solid #898989; }
 .section-search .search-news-wrap .sub-title { color:#000; font-size:18px; font-weight:500; line-height:1; }
 .section-search .search-news-wrap .sub-title .num { margin-left:10px; color:#ff0018; }
@@ -173,7 +172,6 @@
 .section-detail .comment-wrap .comment-list li { display:flex; align-items:flex-start; justify-content:flex-start;  padding:10px 0; border-bottom:1px solid #ebebeb; }
 .section-detail .comment-wrap .comment-list li .user { width:65px; word-break:break-all; }
 .section-detail .comment-wrap .comment-list li .comment-area { width:calc(100% - 65px); }
-
 
 /* 메인 */
 .is-personal-main, .is-personal-main .header-wrap { background-color:#ebebeb; }
@@ -271,7 +269,7 @@
 .section04 .btn-more { color:#fff; font-size:18px; text-align:right; text-decoration:underline; }
 
 
-/* 이슈별 리스트 */
+/* 이슈별 메인 */
 .filter-wrap { display:flex;align-items:center; justify-content:space-between; }
 
 .box-wrap { padding:0 22px}
@@ -297,19 +295,16 @@
 
 
 
+
+
+
+
+
+
 /* 저해상도 디바이스 대응 */
 @media screen and (max-width: 320px) {
     .section-setting .btn-wrap .btn-save { width:100px; }
 }
-
-
-
-
-
-
-
-
-
 
 
 
