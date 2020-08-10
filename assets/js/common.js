@@ -38,18 +38,18 @@ function initGnb() {
 
 //LNB
 function initLNB() {
-	var lnb = $("nav#lnb");
-	var lList = lnb.find(">ul");
-	var lItem = lList.find(">li");
+	var lnb = $('nav#lnb');
+	var lList = lnb.find('>ul');
+	var lItem = lList.find('>li');
 
 	function scrollSetting() {
-		if(lItem.find(">a").hasClass("active")) {
+		if(lItem.find('>a').hasClass('active')) {
 			lListWidth = lList.outerWidth();
-			activeWidth = lItem.find(">a.active").parent().width();
-			acitiveOfsLeft = lItem.find(">a.active").parent().offset().left;
+			activeWidth = lItem.find('>a.active').parent().width();
+			acitiveOfsLeft = lItem.find('>a.active').parent().offset().left;
 
 			lList.animate({
-				"scrollLeft": (acitiveOfsLeft+activeWidth)-lListWidth
+				'scrollLeft': (acitiveOfsLeft+activeWidth)-lListWidth
 			})
 		}
 	}
@@ -57,16 +57,25 @@ function initLNB() {
 	setTimeout(function() {
 		scrollSetting()
 	},100)
-	$(window).on("orientationchange",function() {
+	$(window).on('orientationchange',function() {
 		scrollSetting()
 	})
 }
 
 
-
 $(document).ready(function() {
 	initGnb() //GNB
 	initLNB() //LNB
+
+	// 헤더 고정
+	$(window).scroll(function() { 
+		var height = $(window).scrollTop(); 
+		if(height > 60) {
+			$('.header-wrap').addClass('fixed');
+		} else{
+			$('.header-wrap').removeClass('fixed');
+		}
+	});
 
 	// 메인 비쥬얼 슬라이드
 	$('.visual-wrap').slick({
@@ -78,4 +87,8 @@ $(document).ready(function() {
 	$('.news-slide-wrap').slick({
 		dots: true,
 	});
+
+	
 })
+
+
