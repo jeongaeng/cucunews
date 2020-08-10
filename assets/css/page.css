@@ -144,7 +144,7 @@
 .section-mypage .section-title .mypage { display:inline-block; width:23px; height:22px; margin-top:2px; margin-right:10px; background:url(../images/icon-my.png) no-repeat left center; background-size:100%; }
 .section-mypage .table-container { margin-top: 20px; }
 .section-mypage .table-container .input-checkbox2 { margin-top:5px; }
-.section-mypage .btn-wrap { display:flex; margin-top:15px; }
+.section-mypage .btn-wrap { display:flex; margin-top:25px; }
 .section-mypage .btn-wrap .btn + .btn { margin-left:5px; }
 .section-mypage .btn-wrap .btn-cancel { color:#aaa; }
 .section-mypage .my-qna-wrap { margin-top:50px; }
@@ -159,6 +159,23 @@
 .section-mypage .my-qna-list .bottom-area { margin-top:8px; color:#333; font-size:13px; }
 .section-mypage .my-qna-list .bottom-area .date { color:#333; font-size:13px; }
 .section-mypage .my-qna-list .btn-answer { display:inline-block; height:24px; line-height:22px; margin-left:10px; padding:0 10px; border:1px solid #b7b7b7; color:#000; font-size:13px; }
+.section-mypage .section-subtitle { color:#000; font-size:20px; text-align:center; }
+.section-mypage .qna-wrap { padding:15px 0 0; border-top:1px solid #000; border-bottom:1px solid #000; }
+.section-mypage .qna-wrap .qna-head { position:relative; font-size:13px; line-height:24px; }
+.section-mypage .qna-wrap .qna-head .state { width:55px; height:22px; line-height:22px; margin-right:5px; padding:0 5px; background-color:#009ffb; color:#fff; font-size:13px;}
+.section-mypage .qna-wrap .qna-head .no {  margin-right:20px; color:#000; }
+.section-mypage .qna-wrap .qna-head .date { color:#666; font-size:13px; }
+.section-mypage .qna-wrap .qna-head .btn-del { position:absolute; top:0; right:0; height:22px; line-height:20px; padding:0 5px; border:1px solid #959595; color:#333; font-size:13px; }
+.section-mypage .qna-wrap .qna-body { margin-top:12px; padding:0 10px; color:#333; font-size:14px; line-height:1.5; }
+.section-mypage .qna-wrap .question-area { padding-left:50px; background:url('../images/icon-qna-q.png') no-repeat left 5px top; background-size:22px 22px; }
+.section-mypage .qna-wrap .img-area { margin-top:12px; }
+.section-mypage .qna-wrap .img-area img { width:100%; }
+.section-mypage .qna-wrap .answer-area { margin:15px 0; padding-top:15px; padding-left:50px; border-top:1px solid #e1e1e1; background:url('../images/icon-qna-a.png') no-repeat left 5px top 15px; background-size:22px 22px; }
+.section-mypage .qna-wrap .answer-area .info-area { margin-bottom:15px; }
+.section-mypage .qna-wrap .answer-area .info-area strong { color:#000; font-size:13px; font-weight:500; }
+.section-mypage .qna-wrap .answer-area .info-area .date { margin-left:10px; color:#666; font-size:13px; }
+
+
 
 /* 이슈 상세 */
 .section-detail { padding:0 0 45px; }
@@ -301,7 +318,6 @@
 .section04 .btn-more { color:#fff; font-size:18px; text-align:right; text-decoration:underline; }
 
 
-/* 이슈별 리스트 */
 
 
 
