@@ -277,7 +277,7 @@
 
 /* 메인 - 인트로 */
 .visual-wrap { position: relative; color:#fff; }
-.visual-wrap:before { content:'작업중입니다.'; color:#fff; font-size:50px; display:flex; align-items:center; justify-content: center; width:100%; height:100%; background: magenta; opacity:.3; position:absolute; top:0; left:0; z-index:5000; }
+.visual-wrap:before { content:'작업중입니다.'; color:#fff; font-size:50px; display:flex; align-items:center; justify-content: center; width:100%; height:100%; background: magenta; opacity:.3; position:absolute; top:0; left:0; z-index:300; }
 .visual-wrap .slide1{ background:lavenderblush; }
 .visual-wrap .slide2{ background:aliceblue; }
 .visual-wrap .slide3{ background:lightblue; }
