@@ -25,7 +25,9 @@
 .btn.primary { background-color:#464646; }
 .btn.secondary { color:#333; background-color:#fff; border:1px solid #b7b7b7; line-height:46px; }
 .btn.small { height:24px; line-height:24px; font-size:12px; padding:0 10px; }
-.btn-wrap { margin-top:30px; }
+
+.btn-wrap { display:flex; margin-top:30px; }
+.btn-wrap .btn + .btn { margin-left:5px; }
 
 /* input */
 ::-ms-clear { display:none; }
@@ -41,11 +43,13 @@ input[type='search'] { -webkit-appearance:none; }
 input[type='search']::-webkit-search-cancel-button { -webkit-appearance:none; }
 input[type='text'], 
 input[type='password'], 
-input[type='number'] { display:inline-block; width:100%; height:30px; padding:5px 10px; border:1px solid #ccc; background-color:#fff; color:#333; font-family:'Noto Sans KR', '맑은 고딕', Malgun Gothic, Arial, Sans-serif; font-size:16px; line-height:28px; border-radius:0; -webkit-border-radius:0; }
+input[type='number'] { display:inline-block; width:100%; height:30px; line-height:28px; padding:5px 10px; border:1px solid #ccc; border-radius:0; -webkit-border-radius:0; background-color:#fff; color:#333; font-family:'Noto Sans KR', '맑은 고딕', Malgun Gothic, Arial, Sans-serif; font-size:16px; }
 input[type='text'][disabled] { border-color:#e9e9e9; background-color:#f5f5f5; color:#d8d8d8; cursor:not-allowed; }
 
+.input-wrap input { width:100%; }
+
 .input-checkbox2 { display:inline-block; position:relative; height:16px;}
-.input-checkbox2 input[type='checkbox'] { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+.input-checkbox2 input[type='checkbox']  { position:absolute; width:0; height:0; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; opacity:0; }
 .input-checkbox2 input[type='checkbox'] + label { color:#333; font-size:13px; line-height:14px; cursor:pointer; vertical-align:top; }
 .input-checkbox2 input[type='checkbox'] + label::before { content:''; position: absolute; left:0; top:0; display:inline-block; width:14px; height:14px; background:url('../images/icon-login-checkbox.png') no-repeat 0 0; background-size:100%; vertical-align:top; }
 .input-checkbox2 input[type='checkbox'] + label span { display:inline-block; margin-left:18px; line-height:14px; vertical-align:top; }
@@ -58,7 +62,7 @@ input[type='text'][disabled] { border-color:#e9e9e9; background-color:#f5f5f5; c
 
 /* select */
 .selectbox { display: inline-block; width:100%; }
-.selectbox select { width:100%; height:24px; padding:0 10px; border:1px solid #ccc; border-radius:0; -webkit-border-radius:0; background: url('../images/icon-select-arrow.png') no-repeat right 7px center; background-size:15px 9px; }
+.selectbox select { width:100%; height:30px; padding:0 10px; border:1px solid #ccc; border-radius:0; -webkit-border-radius:0; background: url('../images/icon-select-arrow.png') no-repeat right 7px center; background-size:15px 9px; }
 
 /* table */
 .table-container { border-top:1px solid #000; }
@@ -73,7 +77,7 @@ input[type='text'][disabled] { border-color:#e9e9e9; background-color:#f5f5f5; c
 /* pagination */
 .pagination { margin-top:20px; font-size:0; text-align:center; }
 .pagination * { vertical-align:top; }
-.pagination button { display:inline-block; height:24px; color:#000; font-size:13px; font-weight:500; line-height:24px; }
+.pagination button { display:inline-block; height:24px; color:#000; font-size:15px; font-weight:700; line-height:24px; }
 .pagination button[disabled] { opacity:.4; cursor:default; }
 .pagination .btn-prev { padding-left:12px; background:url('../images/icon-prev.png') no-repeat left center; background-size:6px 11px; }
 .pagination .btn-next { padding-right:12px; background:url('../images/icon-next.png') no-repeat right center; background-size:6px 11px; }
@@ -102,7 +106,7 @@ input[type='text'][disabled] { border-color:#e9e9e9; background-color:#f5f5f5; c
 
 
 /* 레이아웃 */
-.wrap { width: 100%; height:100%; min-width:320px; }
+.wrap { width: 100%; height:100%; min-width:320px; -webkit-overflow-scrolling:touch; }
 
 /* 헤더영역 */
 .header-wrap { position:relative; z-index:100; width:100%; height:60px; padding:20px 0 15px; transition: top 0.2s ease-in-out; text-align:center; }
@@ -121,7 +125,7 @@ input[type='text'][disabled] { border-color:#e9e9e9; background-color:#f5f5f5; c
 .header-wrap.fixed + .container { padding-top: 60px; }
 
 /* 전체메뉴 */
-.menu-wrap { display:none; position:fixed; z-index:500; top:0; right:-100%; width:100%; height:100%; overflow-x:hidden; overflow-y:auto; background-color:#fff; }
+.menu-wrap { display:none; position:fixed; z-index:500; top:0; right:-100%; width:100%; height:100%; overflow-x:hidden; overflow-y:auto; background-color:#fff; -webkit-overflow-scrolling:touch; }
 .menu-wrap .btn-menu-close { position:absolute; top:0; right:0; width:60px; height:60px; background:url('../images/icon-menu-close.png') no-repeat right 22px bottom 15px; background-size:31px 29px; }
 .menu-wrap .menu-head { min-height:60px; padding:0 22px; background-color:#e5eef6; }
 .menu-wrap .menu-head .menu-logo { display:inline-block; margin-top:20px; width:166px; height:25px; }
@@ -155,7 +159,7 @@ input[type='text'][disabled] { border-color:#e9e9e9; background-color:#f5f5f5; c
 
 /* lnb */
 .lnb { overflow:hidden; margin:15px 0 20px; }
-.lnb ul { padding:0 22px; overflow-x:auto; overflow-y:hidden; white-space:nowrap; text-align:center; scrollbar-width:none; -ms-overflow-style:none; }
+.lnb ul { padding:0 22px; overflow-x:auto; overflow-y:hidden; white-space:nowrap; text-align:center; scrollbar-width:none; -ms-overflow-style:none; scroll-behavior:smooth; }
 .lnb ul::-webkit-scrollbar { display:none; }
 .lnb ul li { display:inline-block; height:36px; line-height:36px; margin-left:5px; border-radius:18px; -webkit-border-radius:18px; text-align:center; }
 .lnb ul li:first-child { margin-left:0; }
@@ -180,7 +184,7 @@ input[type='text'][disabled] { border-color:#e9e9e9; background-color:#f5f5f5; c
 .footer-wrap .footer-info .company { margin:15px 0 8px; color:#2c2c2c; font-size:15px; font-weight:500; }
 .footer-wrap .footer-info .address address { font-weight:300; }
 .footer-wrap .sns-wrap { position:absolute; top:20px; right:22px; font-size:0; }
-.footer-wrap .sns-wrap li { display:inline-block; width:32px; height:32px; margin-left:6px; }
+.footer-wrap .sns-wrap li { display:inline-block; width:32px; height:32px; margin-left:10px; }
 .footer-wrap .sns-wrap li:first-child { margin-left:0; }
 .footer-wrap .sns-wrap li img { width:100%; height:100%; }
 
