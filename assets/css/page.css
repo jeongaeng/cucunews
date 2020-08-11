@@ -1,22 +1,22 @@
 @charset "utf-8";
 
 /* 로그인 */
-.section-login { margin:0 -22px; padding:30px 0 45px; }
-.section-login .section-title { margin:0 22px 12px; padding-left:20px; background:url('../images/icon-login-title.png') no-repeat left center; background-size:13px 17px; color:#272727; font-size:22px; line-height:1.1; }
-.section-login .login-wrap { padding:20px 22px; background-color:#e5eef6; }
-.section-login .login-wrap .input-wrap { height:45px; }
-.section-login .login-wrap .input-wrap input { height:100%; border-color:#666; background-color:#fff; line-height:43px; font-size:16px; }
+.section-login { padding:30px 22px 45px; }
+.section-login .section-title { margin-bottom:12px; padding-left:20px; background:url('../images/icon-login-title.png') no-repeat left center; background-size:13px 17px; color:#272727; font-size:20px; line-height:1; }
+.section-login .login-wrap { margin:0 -22px; padding:24px 22px; background-color:#e5eef6; }
+.section-login .login-wrap .input-wrap { height:48px; }
+.section-login .login-wrap .input-wrap input { height:100%; width:100%; padding:10px 10px; border-color:#666; background-color:#fff; font-size:16px; vertical-align:middle; }
 .section-login .login-wrap .input-wrap + .input-wrap { margin-top:8px; }
-.section-login .login-wrap .btn-wrap { margin:10px 0 12px}
+.section-login .login-wrap .btn-wrap { margin:12px 0 16px;}
 .section-login .login-setting { text-align:center; }
-.section-login .login-setting .input-checkbox-login { display:inline-block; position:relative; }
+.section-login .login-setting .input-checkbox-login { position:relative; display:inline-block;  }
 .section-login .login-setting .input-checkbox-login input[type='checkbox'] { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
 .section-login .login-setting .input-checkbox-login input[type='checkbox'] + label { color:#333; font-size:16px; line-height:22px; cursor:pointer; vertical-align:1px; }
 .section-login .login-setting .input-checkbox-login input[type='checkbox'] + label::before { content:''; display:inline-block; width:22px; height:22px; background:url('../images/icon-login-checkbox.png') no-repeat 0 0; background-size:100%; vertical-align:top; }
 .section-login .login-setting .input-checkbox-login input[type='checkbox'] + label span { display:inline-block; margin-left:6px; vertical-align:middle; line-height:22px; vertical-align:top; }
 .section-login .login-setting .input-checkbox-login input[type='checkbox']:checked + label::before { background:url('../images/icon-login-checkbox-checked.png') no-repeat 0 0; background-size:100%; }
 .section-login .login-setting .input-checkbox-login:first-child { margin-right:24px; }
-.section-login .login-notice { margin-top:30px; padding:0 22px; color:#666; font-size:14px;  }
+.section-login .login-notice { margin-top:30px; color:#666; font-size:14px; }
 
 /* 마이 메뉴 */
 .section-my-menu .btn-menu-close { width:60px; height:60px; position:absolute; top:0; right:0; background:url('../images/icon-menu-close.png') no-repeat right 22px bottom 15px; background-size:31px 29px; }
@@ -26,11 +26,11 @@
 .section-my-menu .menu-head .menu-logo img { width:100%; height:100%; vertical-align:top; }
 .section-my-menu .menu-head .state-info { margin-top:12px; color:#272727; font-size:16px; font-weight:400; text-decoration:underline; }
 .section-my-menu .menu-body { padding:25px 0; }
-.section-my-menu .menu-title { color:#000; font-size:24px; font-weight:400; text-align:center; line-height:24px; }
+.section-my-menu .menu-title { color:#000; font-size:24px; font-weight:500; text-align:center; line-height:24px; }
 .section-my-menu .menu-title i.mypage { display:inline-block; width:23px; height:22px; margin-top:2px; margin-right:10px; background:url('../images/icon-my.png') no-repeat left center; background-size:100%; }
 .section-my-menu .mypage-menu { margin-top:12px; }
 .section-my-menu .mypage-menu li:not(:last-child) { border-bottom:1px solid #c2c2c2; }
-.section-my-menu .mypage-menu li a { display:block; padding:18px 0; color:#000; font-size:17px; }
+.section-my-menu .mypage-menu li a { display:block; padding:16px 0; color:#000; font-size:18px; }
 .section-my-menu .btn-wrap { margin-top:50px; }
 
 /* 가짜뉴스 신고 */
