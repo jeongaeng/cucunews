@@ -80,7 +80,7 @@ $(document).ready(function() {
 	// 메인 비쥬얼 슬라이드
 	$('.visual-wrap').slick({
 		autoplay: true,
-		autoplaySpeed: 3000,
+		autoplaySpeed: 5000,
 	});
 
 	// 뉴스리스트 슬라이드
