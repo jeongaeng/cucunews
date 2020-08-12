@@ -79,8 +79,16 @@ $(document).ready(function() {
 
 	// 메인 비쥬얼 슬라이드
 	$('.visual-wrap').slick({
+		autoplay: false,
+		autoplaySpeed: 5000,
+		arrows: false,
+		dots: true,
+	});
+	$('#intro-slide-wrap').slick({
 		autoplay: true,
 		autoplaySpeed: 5000,
+		arrows: false,
+		dots: true,
 	});
 
 	// 뉴스리스트 슬라이드

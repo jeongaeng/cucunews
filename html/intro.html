@@ -94,7 +94,8 @@
     
         <!-- container -->
         <main class="container main-intro">
-            <div class="visual-wrap">
+            <!-- fake -->
+            <div class="visual-wrap" id="intro-visual-slide">
                 <div class="slide-content slide1">
                     <img src="../assets/images/@dummy/@intro-1.png" alt="" style="width:100%;">
                 </div>
@@ -105,70 +106,89 @@
                     <img src="../assets/images/@dummy/@intro-3.png" alt="" style="width:100%;">
                 </div>
             </div>
-            <div class="intro-visual-wrap" style="display: none">
+
+            <!-- original -->
+            <div class="intro-slide-wrap" id="intro-slide-wrap">
                 <!-- slide 1 -->
-                <div>
-                    <p>
+                <div class="intro-slide slide1">
+                    <p class="intro-title">
                         더 손쉬운 검색<br>
                         간편한 데이터 리스트
                     </p>
-                    <p><span>16,530,066,433</span>건 데이터 분석</p>
-                    <div class="animate-wrap">
-
+                    <p class="intro-text"><span class="data-number">16,530,066,433</span>건 데이터 분석</p>
+                    <div class="motion-wrap">
+                        <div class="frame-wrap">
+                            <!-- <img src="../assets/images/frame.png" alt=""> -->
+                        </div>
                     </div>
                 </div>
                 <!-- slide 2 -->
-                <div>
-                    <p>
+                <div class="intro-slide slide3">
+                    <p class="intro-title">
                        100개 이상의<br>
                        언론사 통합 정보
                     </p>
-                    <p>흩어져 있는 정보를 쿠쿠에서 한번에</p>
-                    <div class="animate-wrap">
-                        <ul>
-                            <li>경향신문</li>
-                            <li>뉴스타파</li>
-                            <li>국민일보</li>
-                            <li>노컷뉴스</li>
-                            <li>뉴시스</li>
-                            <li>데일리안</li>
-                            <li>동아일보</li>
-                            <li>뉴데일리</li>
-                            <li>문화일보</li>
-                            <li>매일경제</li>
-                            <li>블로터</li>
-                            <li>서울경제</li>
-                            <li>서울신문</li>
-                            <li>세계일보</li>
-                            <li>스포츠동아</li>
-                            <li>스포츠<br>서울</li>
-                            <li>아이뉴스</li>
-                            <li>연합뉴스</li>
-                            <li>이데일리</li>
-                            <li>전자신문</li>
-                            <li>조선비즈</li>
-                            <li>중앙일보</li>
-                            <li>한겨레</li>
-                            <li>JTBC</li>
-                            <li>KBS</li>
-                        </ul>
+                    <p class="intro-text">흩어져 있는 정보를 쿠쿠에서 한번에</p>
+                    <div class="motion-wrap">
+                        <!-- <div class="press-item-list2">
+                            <ul class="item-list2">
+                                <li>경향신문</li>
+                                <li>뉴스타파</li>
+                                <li>국민일보</li>
+                                <li>노컷뉴스</li>
+                                <li>뉴시스</li>
+
+                                <li>데일리안</li>
+                                <li>동아일보</li>
+                                <li>뉴데일리</li>
+                                <li>문화일보</li>
+                                <li>매일경제</li>
+
+                                <li>블로터</li>
+                                <li>서울경제</li>
+                                <li>서울신문</li>
+                                <li>세계일보</li>
+                                <li>스포츠<br>동아</li>
+
+                                <li>스포츠<br>서울</li>
+                                <li>아이뉴스</li>
+                                <li>연합뉴스</li>
+                                <li>이데일리</li>
+                                <li>전자신문</li>
+
+                                <li>조선비즈</li>
+                                <li>중앙일보</li>
+                                <li>한겨레</li>
+                                <li>JTBC</li>
+                                <li>KBS</li>
+                            </ul>
+                        </div> -->
                     </div>
                 </div>
                 <!-- slide3 -->
-                <div>
-                    <p>
+                <div class="intro-slide slide3">
+                    <p class="intro-title">
                         핵심기능으로 <br>
                         빠르고 정확히 해결
                     </p>
-                    <p>알림서비스로 24시간 모니터링</p>
-                    <div class="animate-wrap">
-                        <div>키워드별</div>
-                        <div>변호인 해결</div>
-                        <div>핵심추출</div>
-                        <div>알림서비스</div>
+                    <p class="intro-text">알림서비스로 24시간 모니터링</p>
+                    <div class="motion-wrap">
+                        <!-- <div class="circle">
+                            <div class="inner"><span class="object1">핵심추출</span></div>
+                        </div>
+                        <div class="circle">
+                            <div class="inner"><span class="object2">키워드별</span></div>
+                        </div>
+                        <div class="circle">
+                            <div class="inner"><span class="object3">변호인<br>해결</span></div>
+                        </div>
+                        <div class="circle">
+                            <div class="inner"><span class="object4">알림서비스</span></div>
+                        </div> -->
                     </div>
                 </div>
             </div>
+
             <section class="intro-section intro1">
                 <h1 class="main-title">
                     <span class="txt1">데이터 분석 플랫폼</span><br>
@@ -197,6 +217,7 @@
                 </p>
                 <p class="sub-text3">특허출원완료</p>
             </section>
+
             <section class="intro-section intro2">
                 <h1 class="main-title">
                     다양한 매체의<br>
@@ -215,6 +236,7 @@
                     <a href="#" class="btn-start">쿠쿠 시작하기</a>
                 </div>
             </section>
+
             <section class="intro-section intro3">
                 <h1 class="main-title">
                     쿠쿠랩스에서<br> 
@@ -233,6 +255,7 @@
                     <a href="#" class="btn-start">쿠쿠 시작하기</a>
                 </div>
             </section>
+
             <section class="intro-section intro4">
                 <h1 class="main-title">모든 데이터를 원하는대로</h1>
                 <div class="btn-wrap">
