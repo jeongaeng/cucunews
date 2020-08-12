@@ -285,7 +285,7 @@
 .slick-slider .slick-prev,
 .slick-slider .slick-next { display:none !important; color:red }
 
-.intro-section { line-height:1.35; letter-spacing:-.04em; word-break:keep-all;}
+.intro-section { line-height:1.4; letter-spacing:-.04em; word-break:keep-all;}
 .intro-section .btn-wrap { display:flex; justify-content:center; margin-top:0; text-align:center; }
 .intro-section .btn-wrap .btn-start { display:inline-block; width:198px; height:48px; line-height:48px; background-color:#26b6ae; color:#fff; font-size:20px; text-align:center; }
 .intro-section .img-wrap { margin:0 -22px; line-height:0; }
@@ -332,8 +332,8 @@
 .intro-slide .intro-text { margin-top:15px; color:#000; font-size:16px; }
 .intro-slide .intro-text .data-number { display:inline-block; color:#e50c0c; }
 .intro-slide-wrap .slick-slide { outline:none; }
-.intro-slide-wrap .slick-dots { position:absolute; top:0; width:100%; height:10px; z-index:50; text-align:center; }
-.intro-slide-wrap .slick-dots li { display:inline-block; margin:0 5px; font-size:0; }
+.intro-slide-wrap .slick-dots { position:absolute; top:25px; width:100%; height:10px; z-index:50; text-align:center; }
+.intro-slide-wrap .slick-dots li { display:inline-block; margin:0 5px; font-size:0; vertical-align:top; }
 .intro-slide-wrap .slick-dots li button { display:block; width:10px; height:10px; border-radius:100%; -webkit-border-radius:100%; background-color:#d7d7d7; transition:all .3s ease; outline:none; }
 .intro-slide-wrap .slick-dots li.slick-active button { background-color:#526baa; }
 
