@@ -2,34 +2,52 @@
 <html>
 <head>
 <style> 
-div {
+[class^="circle"] {
 display:inline-block; 
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   border-radius:100%;
-  top:200px;
+  top:100px;
   opacity:1;
-  background-color: red;
+  background-color: #666;
   position: relative;
   animation-name: example;
   animation-duration: 1s;
 }
-
-@keyframes example {
-  0%   {background-color:red; left:0px; top:0px; opacity:0; }
-  100% {background-color:red; left:0px; top:200px;  opacity:1;}
+.list-wrap {
+  width:300px;
 }
+@keyframes example {
+  0%   { top:-50px; opacity:0; }
+  100% { top:100px;  opacity:1; }
+}
+/* -------------------------
+ * TABLET CSS
+ * ------------------------- */
 </style>
 </head>
 <body>
 
 <p><b>Note:</b> This example does not work in Internet Explorer 9 and earlier versions.</p>
 
-<div class="circle1"></div>
-<div class="circle2" style="animation-delay:.1s"></div>
-<div class="circle2" style="animation-delay:.2s"></div>
-<div class="circle2" style="animation-delay:.3s"></div>
-<div class="circle2" style="animation-delay:.4s"></div>
+<ul class="list-wrap">
+    <li class="circle1"></li>
+    <li class="circle2" style="animation-delay:.1s"></li>
+    <li class="circle3" style="animation-delay:.2s"></li>
+    <li class="circle4" style="animation-delay:.3s"></li>
+    <li class="circle5" style="animation-delay:.4s"></li>
+    <li class="circle6" style="animation-delay:.5s"></li>
+    <li class="circle7" style="animation-delay:.6s"></li>
+    <li class="circle8" style="animation-delay:.7s"></li>
+    <li class="circle9" style="animation-delay:.8s"></li>
+    <li class="circle10" style="animation-delay:.9s"></li>
+</ul>
+
+
+<div class="sample3-wrap">
+    
+
+</div>
 
 </body>
 </html>

@@ -85,6 +85,7 @@ $(document).ready(function() {
 		dots: true,
 	});
 
+	// 임시(테스트중)
 	$('#intro-slide-wrap .ani-item-list > div').each(function(i,el){
 		var $this = $(this);
 		setTimeout(function(){
