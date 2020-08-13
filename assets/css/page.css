@@ -343,10 +343,10 @@
 .slide2 { overflow:hidden; height:482px; }
 .slide2 .motion-wrap { position:relative; }
 .slide2 .list-wrap { display:flex; flex-wrap:wrap; width:315px; margin:25px auto 0; }
-.slide2 .list-wrap li { position:absolute; top:0; display:flex; align-items:center; justify-content:center; width:55px; height:55px; margin-left:10px; border-radius:100%; color:#fff; font-size:13px; font-weight:300; }
+.slide2 .list-wrap li { position:absolute; top:0; display:flex; align-items:center; justify-content:center; width:55px; height:55px; margin-left:10px; border-radius:100%; color:#fff; font-size:13px; }
 .slide2 .list-wrap li:nth-child(5n+1) { margin-left:0; }
 .slide2 .list-wrap li:nth-child(5) ~ li { margin-top: 8px; }
-.slide2.slick-active .list-wrap li  { position:relative; animation-name:slide2-motion; animation-duration:5s; }
+.slide2.slick-active .list-wrap li  { position:relative; animation-name:slide2-motion; animation-duration:4s; }
 
 @keyframes slide2-motion {
     0%   { top:-500px; opacity:0; }
