@@ -78,18 +78,20 @@ $(document).ready(function() {
 	});
 
 	// 메인 비쥬얼 슬라이드
-	$('.visual-wrap').slick({
-		autoplay: false,
-		autoplaySpeed: 5000,
-		arrows: false,
-		dots: true,
-	});
 	$('#intro-slide-wrap').slick({
 		autoplay: true,
 		autoplaySpeed: 5000,
 		arrows: false,
 		dots: true,
 	});
+
+	$('#intro-slide-wrap .ani-item-list > div').each(function(i,el){
+		var $this = $(this);
+		setTimeout(function(){
+			$this.addClass('active');
+		}, i*1000);
+	});
+
 
 	// 뉴스리스트 슬라이드
 	$('.news-slide-wrap').slick({

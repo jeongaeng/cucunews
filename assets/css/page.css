@@ -320,52 +320,97 @@
 .intro-section.intro3 { padding:60px 22px; }
 .intro-section.intro3 .img-wrap { padding:65px 0 55px; }
 
-.intro-section.intro4 { position:relative; min-height:470px;  padding-top:76.95%; background:url('../images/img-intro-04.png') no-repeat 0 0; background-size:cover; }
+.intro-section.intro4 { position:relative; min-height:470px; padding-top:76.95%; background:url('../images/img-intro-04.png') no-repeat 0 0; background-size:cover; }
 .intro-section.intro4 .main-title { position:absolute; top:100px; width:100%; color:#fff; font-size:25px; text-align:center; }
 .intro-section.intro4 .btn-wrap { position:absolute; bottom:45px; right:22px; text-align:right; }
 .intro-section.intro4 .btn-wrap .btn-more { color:#fff; font-size:20px; text-align:right; border-bottom:1px solid #fff; line-height:1.3; }
 
-
 .intro-slide-wrap {}
-.intro-slide-wrap .intro-slide { overflow:hidden; padding:60px 0 0; text-align:center; line-height:1.25; }
-.intro-slide .intro-title { color:#000; font-size:28px; }
-.intro-slide .intro-text { margin-top:15px; color:#000; font-size:16px; }
-.intro-slide .intro-text .data-number { display:inline-block; color:#e50c0c; }
+.intro-slide-wrap .intro-slide { overflow:hidden; height:482px; padding:60px 0 0; text-align:center; line-height:1.25; }
+.intro-slide-wrap .intro-slide .title-wrap { position:relative; z-index:2; }
+.intro-slide-wrap .intro-slide .intro-title { color:#000; font-size:28px; }
+.intro-slide-wrap .intro-slide .intro-text { margin-top:15px; color:#000; font-size:16px; }
+.intro-slide-wrap .intro-slide .intro-text .data-number { display:inline-block; color:#e50c0c; }
 .intro-slide-wrap .slick-slide { outline:none; }
 .intro-slide-wrap .slick-dots { position:absolute; top:25px; width:100%; height:10px; z-index:50; text-align:center; }
 .intro-slide-wrap .slick-dots li { display:inline-block; margin:0 5px; font-size:0; vertical-align:top; }
 .intro-slide-wrap .slick-dots li button { display:block; width:10px; height:10px; border-radius:100%; -webkit-border-radius:100%; background-color:#d7d7d7; transition:all .3s ease; outline:none; }
 .intro-slide-wrap .slick-dots li.slick-active button { background-color:#526baa; }
 
-.motion-wrap { /*height:320px;*/ padding-top:88.89%; margin:0 22px; background-color:#f8f8f8; }
+.intro-slide-wrap .intro-slide .motion-wrap { /*padding-top:88.89%;*/ height:320px; } 
+
+/* 인트로 슬라이드2 */
+.slide2 { overflow:hidden; height:482px; }
+.slide2 .motion-wrap { position:relative; }
+.slide2 .list-wrap { display:flex; flex-wrap:wrap; width:315px; margin:25px auto 0; }
+.slide2 .list-wrap li { position:absolute; top:0; display:flex; align-items:center; justify-content:center; width:55px; height:55px; margin-left:10px; border-radius:100%; color:#fff; font-size:13px; font-weight:300; }
+.slide2 .list-wrap li:nth-child(5n+1) { margin-left:0; }
+.slide2 .list-wrap li:nth-child(5) ~ li { margin-top: 8px; }
+.slide2.slick-active .list-wrap li  { position:relative; animation-name:slide2-motion; animation-duration:5s; }
+
+@keyframes slide2-motion {
+    0%   { top:-500px; opacity:0; }
+    100% { top:0; opacity:1; }
+}
+
+/* slide2 - press list color  */
+.slide2 .list-wrap li.circle1  { background-color:#21a166; } 
+.slide2 .list-wrap li.circle2  { background-color:#e96e56; } 
+.slide2 .list-wrap li.circle3  { background-color:#f4bb4d; } 
+.slide2 .list-wrap li.circle4  { background-color:#21a166; } 
+.slide2 .list-wrap li.circle5  { background-color:#e289ad; } 
+.slide2 .list-wrap li.circle6  { background-color:#e289ad; } 
+.slide2 .list-wrap li.circle7  { background-color:#2c92d2; } 
+.slide2 .list-wrap li.circle8  { background-color:#4cc560; } 
+.slide2 .list-wrap li.circle9  { background-color:#2c92d2; } 
+.slide2 .list-wrap li.circle10 { background-color:#dc9a60; } 
+.slide2 .list-wrap li.circle11 { background-color:#21a166; } 
+.slide2 .list-wrap li.circle12 { background-color:#2c92d2; } 
+.slide2 .list-wrap li.circle13 { background-color:#f4bb4d; } 
+.slide2 .list-wrap li.circle14 { background-color:#7c89eb; } 
+.slide2 .list-wrap li.circle15 { background-color:#21a166; } 
+.slide2 .list-wrap li.circle16 { background-color:#e289ad; } 
+.slide2 .list-wrap li.circle17 { background-color:#2c92d2; } 
+.slide2 .list-wrap li.circle18 { background-color:#4cc560; } 
+.slide2 .list-wrap li.circle19 { background-color:#2c92d2; } 
+.slide2 .list-wrap li.circle20 { background-color:#dc9a60; } 
+.slide2 .list-wrap li.circle21 { background-color:#f4bb4d; } 
+.slide2 .list-wrap li.circle22 { background-color:#21a166; } 
+.slide2 .list-wrap li.circle23 { background-color:#e96e56; } 
+.slide2 .list-wrap li.circle24 { background-color:#7c89eb; } 
+.slide2 .list-wrap li.circle25 { background-color:#21a166; } 
 
 /* 인트로 슬라이드3 */
-.slide3 .motion-wrap .object1 { /*top:140px; left:170px;*/ background-color:#e88e36; }
-.slide3 .motion-wrap .object2 { top:40px; left:50px; background-color:#2c92d2; }
-.slide3 .motion-wrap .object3 { top:30px; right:22px; background-color:#4cc560; }
-.slide3 .motion-wrap .object4 { top:208px; left:50px;  background-color:#8bc54c;}
+.slide3 .motion-wrap { position:relative; margin:0; background-color:transparent;  }
+.slide3 .motion-wrap .ani-item-list { position:absolute; top:0; left:0; width:100%; height:100%;  }
+.slide3 .ani-item-list span { display:block; color:#fff; line-height:1.25; transition:ease-in .5s; }
+.slide3 .ani-item-list > div { position:absolute; transform:translate(-50%,-50%); z-index:1; transition:ease-in .5s; }
+.slide3 .ani-item-list > div .dot { width:80px; height:80px; border-radius:100%; opacity:1;}
+.slide3 .ani-item-list > div .dot span { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:15px; white-space:nowrap; text-align:center; }
+.slide3 .ani-item-list > div.orange { top:60%; left:62%; }
+.slide3 .ani-item-list > div.orange .dot { background-color:#e88e36; }
+.slide3 .ani-item-list > div.blue { top:24%; left:20%; }
+.slide3 .ani-item-list > div.blue .dot {background-color:#2c92d2; }
+.slide3 .ani-item-list > div.green { top:15%; left:80%; }
+.slide3 .ani-item-list > div.green .dot { background-color:#4cc560; }
+.slide3 .ani-item-list > div.yellowgreen { top:80%; left:30%; }
+.slide3 .ani-item-list > div.yellowgreen .dot { background-color:#8bc54c; }
+.slide3 .ani-item-list > div.active .dot { width:100px; height:100px; opacity:1; } /* active */
+.slide3 .ani-item-list > div.active { border-radius:100%; background:rgba(150,150,150,.1); padding:30px; z-index:0; }
+.slide3 .ani-item-list > div.active > span { border-radius:100%; background:rgba(150,150,150,.1); padding:30px; }
+.slide3 .ani-item-list > div.active span { font-size:18px; } 
 
-.circle {  
-    display:flex; 
-    align-items:center;
-    justify-content:center; width:190px; height:190px; background-color:#f3f3f3;
-    border-radius: 100%;
-    transform: scale(0);
+
+@keyframes slide2-motion {
+    0%   { top:-500px; opacity:0; }
+    100% { top:0; opacity:1; }
 }
-.circle * {
-    display:flex; 
-    align-items:center;
-    justify-content:center;
-    border-radius:100%;
-}
-.circle .inner { width: 130px; height:130px; background: #e2e2e2; }
-.circle .inner span { width: 80px; height:80px; background: #eee; color:#fff; font-size:16px; }
-.circle .inner span.object1 { background-color:#e88e36; }
-.circle .inner span.object2 { background-color:#2c92d2; }
-.circle .inner span.object3 { background-color:#4cc560; }
-.circle .inner span.object4 { background-color:#8bc54c; }
 
 
+
+
+
+/* 인트로 슬라이드1 */
 
 .slide1 { overflow:hidden; }
 .slide1 .motion-wrap { } 
@@ -376,7 +421,6 @@
     overflow: hidden; 
     display:flex;    
     flex-flow: row nowrap;
-    
 }
 .item-list {
     display:flex;
@@ -391,7 +435,6 @@
     border-radius:100%;
     background-color: #f7f7f7;
 }
-
 
 .frame-wrap { position:absolute; top:0; left:0; background: url(../images/frame.png) no-repeat 0 0; background-size: cover; }
 .frame-wrap img { width:100%; }
@@ -411,8 +454,32 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 저해상도 디바이스 대응 */
 @media screen and (max-width: 320px) {
+    /* 인트로 메인 */
+    .slide2 .list-wrap { width:295px; margin:25px auto 0; }
+    .slide2 .list-wrap li { margin-left:5px; }
+    .slide2 .list-wrap li:nth-child(5n+1) { margin-left:0; }
+
     /* 서브 탭메뉴 */
     .tabmenu ul li a { font-size:15px; }
     
