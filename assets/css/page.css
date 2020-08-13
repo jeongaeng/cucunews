@@ -427,7 +427,7 @@
     position:absolute;
     z-index:3;
     left:-530px;
-    bottom:20%;
+    bottom:25%;
     overflow: hidden; 
     display:flex;    
     flex-flow:row nowrap;
