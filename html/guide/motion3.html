@@ -17,25 +17,40 @@
     <script src="../../assets/js/slick.js"></script>
     <script src="../../assets/js/common.js"></script>
     <style> 
-        .slide3 .motion-wrap { position:relative; margin:0;  }
-        .slide3 .motion-wrap .ani-item-list { position:absolute; top:0; left:0; bottom:0; right:0;}
-        .ani-item-list span { display:block; color:#fff; line-height:1.25; transition:ease-in-out 1s; }
-        .ani-item-list > div { position:absolute; transform:translate(-50%,-50%); z-index:1; transition:ease-in-out 1s; }
+        .slide3 .motion-wrap {  position:relative; margin:0; padding-top:88.88%; }
+        .slide3 .motion-wrap .ani-item-list {  position:absolute; left:0; top:0;     width: 100%;   height: 100%; border:1px solid red; }
+        .ani-item-list span { display:block; color:#fff; line-height:1.25; /* transition:ease-in-out 1s;*/ }
+        .ani-item-list > div { position:absolute; transform:translate(-50%,-50%); z-index:1; /*transition:ease-in-out 1s;*/ 
+            
+         }
         .ani-item-list > div .dot { width:80px; height:80px; border-radius:100%; opacity:1;}
         .ani-item-list > div .dot span { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:15px; white-space:nowrap; text-align:center; }
         .ani-item-list > div.orange { top:60%; left:62%; }
-        .ani-item-list > div.orange .dot { background-color:#e88e36; }
         .ani-item-list > div.blue { top:24%; left:20%; }
-        .ani-item-list > div.blue .dot {background-color:#2c92d2; }
         .ani-item-list > div.green { top:15%; left:80%; }
-        .ani-item-list > div.green .dot { background-color:#4cc560; }
         .ani-item-list > div.yellowgreen { top:80%; left:30%; }
+        .ani-item-list > div.orange .dot { background-color:#e88e36; }
+        .ani-item-list > div.blue .dot {background-color:#2c92d2; }
+        .ani-item-list > div.green .dot { background-color:#4cc560; }
         .ani-item-list > div.yellowgreen .dot { background-color:#8bc54c; }
         /* active */
-        .ani-item-list > div.active .dot { width:120px; height:120px; opacity:1; }
-        .ani-item-list > div.active { border-radius:100%; background:rgba(150,150,150,.1); padding:40px; z-index:0; }
-        .ani-item-list > div.active > span { border-radius:100%; background:rgba(150,150,150,.1); padding:40px; }
-        .ani-item-list > div.active span { font-size:18px; } 
+        .slide3.slick-active .ani-item-list > div { animation-name:slide3-motion; animation-duration:4s; }
+        .slide3.slick-active .ani-item-list > div .dot { width:120px; height:120px; opacity:1; }
+        .slide3.slick-active .ani-item-list > div { border-radius:100%; background:rgba(150,150,150,.1); padding:40px; z-index:0; }
+        .slide3.slick-active .ani-item-list > div > span { border-radius:100%; background:rgba(150,150,150,.1); padding:40px; }
+        .slide3.slick-active .ani-item-list > div span { font-size:18px; } 
+
+        .slide3.slick-active  .ani-item-list > div.orange { animation-duration: 0s; }
+        .slide3.slick-active  .ani-item-list > div.blue { animation-duration: .5s; }
+        .slide3.slick-active  .ani-item-list > div.green { animation-duration: 1s; }
+        .slide3.slick-active  .ani-item-list > div.yellowgreen { animation-duration: 1.5s; }
+
+
+        @keyframes slide3-motion {
+            0%   {transform: scale(.5);}
+            100% {transform: scale(1);}
+        }
+
    </style>
 
 </head>
@@ -138,7 +153,9 @@
     </div>
 </div>
 <!-- // 슬라이드 영역 -->
-<script>
+
+
+<!-- <script>
     $(document).ready(function(){
         $('.ani-item-list > div').each(function(i,el){
             var $this = $(this);
@@ -147,7 +164,7 @@
             }, i*1000);
         });
     })
-</script> 
+</script>  -->
 
 </body>
 </html>
