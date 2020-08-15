@@ -116,34 +116,35 @@
                     <table>
                         <caption>법률상담 등록</caption>
                         <colgroup>
-                            <col style="width:34%">
+                            <col style="width:24%">
                             <col style="width:auto">
                         </colgroup>
                         <tbody>
                             <tr>
                                 <th scope="row">법률<br>대리인</th>
                                 <td>
-                                    <div class="lawer-content">
-                                        <span class="img-area"><img src="../assets/images/img-person3.jpg" alt=""></span>
+                                    <!-- 법률대리인 정보 -->
+                                    <div class="lawer-info">
+                                        <div class="img-area">
+                                            <img src="../assets/images/img-person1.jpg" alt="">
+                                        </div>
                                         <div class="info-area">
-                                            <span>명예훼손</span>
-                                            <span>최나래 변호사</span>
-                                            <span><strong>명예훼손</strong>/인사관리/이혼/특허</span>
-                                            <ul class="career-list">
-                                                <li>1111</li>
-                                                <li>1111</li>
-                                                <li>1111</li>
-                                                <li>1111</li>
-                                            </ul>
+                                            <!-- [참고] 전문분야에 따라 클래스 적용. 명예훼손(.type1) / 특허,상표등록(.type2) / 인사관리(.type3) -->
+                                            <span class="speciality type1">명예훼손</span> 
+                                            <span class="name">최나래 변호사</span>
+                                            <span class="speciality-desc"><strong>명예훼손</strong>/인사관리/이혼/특허</span>
                                         </div>
                                     </div>
+                                    <!-- //법률대리인 정보 -->
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">제목</th>
                                 <td>
-                                    <div class="input-wrap">
-                                        <input type="text" name="" value="이 기사 내용은 검증이 안된 것입니다." title="제목 입력">
+                                    <div class="textarea-wrap subject">
+                                        <textarea placeholder="제목을 입력해주세요." title="제목 입력">
+이 기사 내용은 검증이 안된 것입니다. 법률 소송신청 하겠습니다.
+                                        </textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -151,12 +152,12 @@
                                 <th scope="row">상담내용</th>
                                 <td>
                                     <div class="textarea-wrap">
-                                        <textarea name="" id="" cols="30" rows="10">
-가나다라마바사 <br>
-가나다라마바사 <br>
-가나다라마바사 <br>
-가나다라마바사 <br>
-가나다라마바사 <br>
+                                        <textarea placeholder="내용을 입력해주세요." title="상담내용 입력">
+가나다라마바사
+가나다라마바사
+가나다라마바사
+가나다라마바사
+가나다라마바사
                                         </textarea>
                                     </div>
                                 </td>
@@ -164,8 +165,8 @@
                             <tr>
                                 <th scope="row">파일첨부</th>
                                 <td>
-                                    <div class="input-file-wrap">
-                                        <input type="text" name="" value="" title="">
+                                    <div class="input-wrap">
+                                        <input type="file" name="" value="">
                                     </div>
                                 </td>
                             </tr>

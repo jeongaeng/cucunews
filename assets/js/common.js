@@ -85,18 +85,16 @@ $(document).ready(function() {
 		dots: true,
 	});
 
-	// 임시(테스트중)
-	// $('#intro-slide-wrap .ani-item-list > div').each(function(i,el){
-	// 	var $this = $(this);
-	// 	setTimeout(function(){
-	// 		$this.addClass('active');
-	// 	}, i*1000);
-	// });
-
-
 	// 뉴스리스트 슬라이드
 	$('.news-slide-wrap').slick({
 		dots: true,
+		arrows: false,
+	});
+
+	// 마이페이지 법률상담
+	$('#lawer-slide-wrap').slick({
+		dots: true,
+		arrows: false,
 	});
 
 	
