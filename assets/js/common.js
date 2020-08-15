@@ -79,7 +79,7 @@ $(document).ready(function() {
 
 	// 메인 비쥬얼 슬라이드
 	$('#intro-slide-wrap').slick({
-		autoplay: false,
+		autoplay: true,
 		autoplaySpeed: 5000,
 		arrows: false,
 		dots: true,
