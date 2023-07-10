@@ -1,0 +1,642 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="pragma" content="no-cache"/>
+	<meta http-equiv="Cache-Control" content="No-Cache"/>
+	<!-- 20140512 추가 -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi" />
+	<meta content="https://www.ibk.co.kr/img/logo800.png" property="og:image"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<!-- //20140512 추가 -->
+	<title>IBK기업은행</title> 
+	
+	<link rel="apple-touch-icon-precomposed"  href="/img/common/ic_bm_ios.png" />
+	<link rel="shortcut icon" href="/img/common/ibk.ico" type="image/x-icon" />
+	
+	<script type="text/javascript" src="http://stage.ibk.co.kr/js/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="http://stage.ibk.co.kr/js/rwd/jquery-ui-1.10.3.custom.min.js"></script> 	
+	<script type="text/javascript" src="http://stage.ibk.co.kr/js/modernizr.js"></script>
+	<script type="text/javascript" src="http://stage.ibk.co.kr/js/jquery.cookie.js"></script> 
+	<script type='text/javascript' src="http://stage.ibk.co.kr/js/rwd/rwd_default.js"></script> 
+	<script type="text/javascript" charset="utf-8" src="http://stage.ibk.co.kr/js/ibkTag/tag_ibk.js"></script>
+ 
+	<link rel="stylesheet" type="text/css" href="http://stage.ibk.co.kr/style/rwd/common.css" />
+	<link rel="stylesheet" type="text/css" href="http://stage.ibk.co.kr/style/rwd/layout.css" /> 
+	<link rel="stylesheet" type="text/css" href="http://stage.ibk.co.kr/style/rwd/main.css" />
+	<link rel="stylesheet" type="text/css" href="http://stage.ibk.co.kr/style/rwd/mainNew.css" />
+	
+	<script type="text/javascript" src="http://stage.ibk.co.kr/js/rwd/default.js"></script> 
+	<script type="text/javascript" src="http://stage.ibk.co.kr/js/rwd/rwd_ui_new.js"></script> 
+	<script type="text/javascript" src="http://stage.ibk.co.kr/js/rwd/rwd_slider_main.js"></script>  
+
+
+	<script type="text/javascript">
+
+	var resizeImgArr =[];
+	var resizeEtcLinkArr = [];
+	var mainSlider;
+	var subSlider;
+	var noticeSlider;
+	var eventSlider;
+
+	$(function(){
+		//메인슬라이드
+		mainSlider = Slider();
+		mainSlider.initHandle({content:'mainVisualWrap', subMotion:true, autoPlay:true, autoPlayTime:6000});
+
+		//서브베너
+		subSlider = Slider();
+		subSlider.initHandle({content:'subVisualWrap', subMotion:false, autoPlay:true, autoPlayTime:6000});
+
+		//공지배너
+		noticeSlider = Slider();
+		noticeSlider.initHandle({content:'noticeSliderWrap', autoPlay:false});
+
+		//이벤트배너
+		eventSlider = Slider();
+		eventSlider.initHandle({content:'eventSliderWrap', autoPlay:false});
+		
+		/*메인비주얼 이미지 수집*/
+		$('#mainVisualWrap .visual-slider img').each(function(i, itm){
+			resizeImgArr.push($(itm));
+		});
+		
+		$('#subVisualWrap img').each(function(i, itm){
+			resizeImgArr.push($(itm));
+		});
+
+		var resizeInter = null;
+		$(window).on('resize', function(){
+			clearTimeout(resizeInter);
+			resizeInter = null;
+			//슬라이더 정지
+			mainSlider.autoSlideStopHandle();
+			subSlider.autoSlideStopHandle();
+			noticeSlider.autoSlideStopHandle();
+			eventSlider.autoSlideStopHandle();
+			if(resizeInter==null) resizeInter = setTimeout(resizeFn, 300);
+		});
+	});
+
+
+	/*시작 20170206 플립 김종환 통합슬라이더 추가*/
+	/****************************************************************
+	*
+	* 통합슬라이더 20170203 플립 김종환
+	*
+	*****************************************************************/
+	var Slider = (function() {
+		var timeOut;
+		var op = {
+			init: false,
+			content: 'visual-slider',
+			slideTime: 600,
+			subMotion: false,
+			autoPlay: false,
+			autoPlayTime: 1000,
+			touching: false
+		}
+
+		var initHandle = function(option) {
+			$.extend(op, option);
+			op.con = $('#'+op.content);
+			op.slideCon = op.con.find('.visual-slider');
+			op.slide = op.con.find('.visual-slider > li');
+			op.slideLen = op.slide.length;
+			op.direction = op.con.find('.direction');
+			op.playNum = 0;
+			op.moing = false;
+			op.inter = null;
+			op.btnstart = op.direction.children('.slider-behavior'); 
+			op.slide.eq(0).children('p').eq(0).stop().fadeIn(1000);
+			op.slide.eq(0).children('p').eq(1).stop().delay(100).fadeIn(1000);
+			op.slide.eq(0).children('a').stop().delay(300).fadeIn(1000);
+			op.pager = op.con.find('.visual-slider-nav');
+			op.init = true;
+			op.startX = 0;
+			op.startY = 0;
+			op.tstate = false;
+			op.mdirection = 'left';
+
+			//pager
+			var pagerEL = '';
+			var bannerTxt = '';
+			for(var i=0;i<op.slideLen;i++) {
+
+				if(i == 1){
+					bannerTxt = "두번째 배너";
+				}else if(i == 2){
+					bannerTxt = "세번째 배너";
+				}else if (i == 3){
+					bannerTxt = "네번째 배너";
+				}else if (i == 4){
+					bannerTxt = "다섯번째 배너";
+				}else{
+					bannerTxt = "첫번째 배너";
+				}
+
+				if(i==0) {
+					pagerEL += '<a href="#" class="on"><span class="blind">'+op.slide.eq(i).find('img').eq(0).attr('alt')+'<em>'+bannerTxt+'</em></span></a>';
+				}else{ 
+					pagerEL += '<a href="#"><span class="blind">'+op.slide.eq(i).find('img').eq(0).attr('alt')+'<em>'+bannerTxt+'</em></span></a>';
+				}
+			}
+
+			op.pager.append(pagerEL);
+
+			op.slide.eq(0).children('a').fadeIn(600);
+
+
+			if(op.slideLen<=1) return false;
+
+
+			//이벤트바인딩
+			eventHandle();
+
+			//자동슬라이드
+			if(op.autoPlay) autoSlideHandle();
+		};
+
+		var eventHandle = function() {
+			//자동슬라이더시 오버스탑
+			if(op.autoPlay) {
+				op.con.off().on('mouseenter mouseleave', function(e) {
+					if(e.type == 'mouseenter') {
+						autoSlideStopHandle();
+					}else{
+						autoSlideHandle();
+					}
+				});
+
+				//자동슬라이더 버튼
+				op.btnstart.off().on('click', function(e) {
+					e.preventDefault();
+					var _this = $(this);
+					if(_this.is('.slider-start')) {
+						_this.removeClass('slider-start').addClass('slider-stop');
+						_this.children('.blind').text('정지');
+						autoSlideHandle();
+					}else{
+						_this.removeClass('slider-stop').addClass('slider-start');
+						_this.children('.blind').text('재생');
+						autoSlideStopHandle();
+					}
+				});
+			}
+
+
+			if($('html').is('.touch')) {
+				op.slideCon.on('touchstart', function(e){
+					//e.preventDefault();
+					var orig = e.originalEvent;
+					autoSlideStopHandle();
+					op.startX = orig.changedTouches[0].pageX;
+					op.startY = orig.changedTouches[0].pageY;
+				});
+				op.slideCon.on('touchmove', function(e){
+					var orig = e.originalEvent;
+					var moveX = orig.changedTouches[0].pageX;
+					var moveY = orig.changedTouches[0].pageY;
+					var xMovement = Math.abs(moveX - op.startX);
+					var yMovement = Math.abs(moveY - op.startY);
+					if(xMovement > yMovement){
+						e.preventDefault();
+						if(op.startX > moveX) op.mdirection = 'left';
+						else op.mdirection = 'right';
+						op.touching = true;
+					}
+				});
+				op.slideCon.on('touchend', function(e){
+					if(op.touching) {
+						op.touching = false;
+						autoSlideHandle();
+						if(op.mdirection == 'left') {
+							op.playNum++;
+							if(op.playNum > op.slideLen-1) op.playNum = 0;
+						}else{
+							op.playNum--;
+							if(op.playNum < 0) op.playNum = op.slideLen-1;
+						}
+						actionHandle(op.mdirection);
+					}
+				});
+			}
+
+			//좌우버튼
+			op.direction.find('a.slider-arrow').off().on('click', function(e) {
+				e.preventDefault();
+				if(op.moing) return false;
+				var _this = $(this);
+				if(_this.is('.next')) {
+					op.playNum++;
+					if(op.playNum > op.slideLen-1) op.playNum = 0;
+					actionHandle('left');
+				}else{
+					op.playNum--;
+					if(op.playNum < 0) op.playNum = op.slideLen-1;
+					actionHandle('right');
+				}
+			});
+
+			//pager
+			op.pager.find('a').off().on('click', function(e) {
+				e.preventDefault();
+				if(op.moing) return false; //20170307 플립 김종환 페이저 모션중 클릭방지
+				op.playNum = $(this).index();
+				actionHandle('left');
+
+			});
+		};
+		var actionHandle = function(d) {
+			if(op.moing) return false;
+			var dr = 'right';
+			if(d == 'right') dr = 'left';
+			op.moing = true;
+			op.slide.filter(':visible').stop().hide('slide', {direction:d}, function(){
+				op.moing = false;
+				if(op.subMotion)  $(this).children().hide();		
+			}, op.slideTime, 'easeInOutExpo').end().eq(op.playNum).stop().show('slide', {direction:dr}, function(){
+					op.moing = false;
+					if(op.subMotion) {
+						$(this).children('p').eq(0).stop().fadeIn(600);
+						$(this).children('p').eq(1).stop().delay(100).fadeIn(600);
+						$(this).children('a').stop().delay(300).fadeIn(600);
+					}
+				}, op.slideTime, 'easeInOutExpo');
+
+			if(op.subMotion) {
+				op.con.stop().animate({backgroundColor:op.slide.eq(op.playNum).data('bgcolor')}, 300);
+			}
+			//pager
+			
+			 op.con.find('.visual-slider-nav a.on').removeClass('on').children('span');
+			 op.con.find('.visual-slider-nav a:eq('+op.playNum+')').addClass('on').children('span');
+		};
+
+		var autoSlideHandle = function() {
+			if(!op.init) return false;
+			if(!op.autoPlay) return false;
+			if(op.inter != null) return false;
+			if(op.btnstart.is('.slider-start')) return false;
+			op.inter = setInterval(function() {
+					op.playNum++;
+					if(op.playNum > op.slideLen-1) op.playNum = 0;
+					actionHandle('left');
+			}, op.autoPlayTime);
+
+		};
+		var autoSlideStopHandle = function() {
+			if(!op.init) return false;
+			clearInterval(op.inter);
+			op.inter = null;
+		};
+		return {
+			initHandle : initHandle,
+			autoSlideHandle : autoSlideHandle,
+			autoSlideStopHandle : autoSlideStopHandle
+		}
+	});
+	/*끝 20170206 플립 김종환*/		
+
+
+	</script>
+	
+
+<!--[if IE 8]> 
+<script src="/js/css3-mediaqueries_src.js"></script>
+<![endif]--> 
+<!--[if IE 6]> 
+<script type="text/javascript" src="/js/jquery.pngFix.js"></script> 
+<script type="text/javascript"> 
+	DD_belatedPNG.fix('.png24, img, .bg'); 
+</script> 
+<![endif]-->
+<style type="text/css">
+	#noti_top_wrap{display:none}
+</style>   
+</head>
+
+<body id="main"> 
+
+<iframe id="check_app" name="check_app" src="" scrolling="no" title="사용자 환경 체크 프레임" style="visibility:hidden;position:absolute;width:0;height:0;" ></iframe>
+
+<!-- skip menu -->
+<ul class="skiplist">
+	<li class="skip"><a href="#main_ct">본문내용으로 바로가기</a></li>
+	<li class="skip"><a href="#gnb_menu">주메뉴 바로가기</a></li>
+</ul>
+<!-- //skip menu -->
+
+
+<!-- //top noti -->
+<form name="hiddenForm" action=""method="post" >
+	<input type="hidden" name="return_url" />
+</form>
+
+
+<div id="wrapper" class="ibk_main">
+	<!-- header -->
+	<div id="header" style="padding:30px 0;text-align: center;background-color:pink;">
+		####  헤더영역  ####
+	</div>
+	<!-- //header -->
+
+	<hr />
+
+
+	<!-- main contents -->
+	<div id="main_ct" class="main-contents">
+		<!-- visual section -->
+		<div class="visual-section">
+			<div class="visual-inner">
+				<div class="visual-top-list">
+					<ul>
+						<!--20181211 로그인 방식 변경
+						<li><a onMouseDown="eval('try{_trk_clickTrace( \'EVT\', \'INDEX_뱅킹로그인\' ); }catch(_e){ }');" href="#" onClick="bankingLogin('A');" class="banking"><span>뱅킹<em>로그인</em></span></a></li>
+						-->
+
+						<li><a href="#" onClick="bankingLogin('MAIN');" id="mainlogin"
+								class="banking"><span>뱅킹<em>로그인</em></span></a>
+							<ul class="login_menu" id="showmain">
+								<li><a href="#" onClick="bankingLogin('A_mybank');">개인뱅킹</a></li>
+								<li><a href="#" onClick="bankingLogin('A_kiup');">기업뱅킹</a></li>
+							</ul>
+						</li>
+						<li><a onMouseDown="eval('try{_trk_clickTrace( \'EVT\', \'INDEX_공인인증센터\' ); }catch(_e){ }');"
+								href="#" onClick="bankingLogin('B');" class="auth-center"><span>인증<em>센터</em></span></a>
+						</li>
+					</ul>
+				</div>
+				<div class="slider-wrap" id="mainVisualWrap">
+					<ul class="visual-slider">
+						<!-- 첫번째 브랜드이미지 -->
+						<li class="item03" data-bgcolor="#ffffff">
+							<p><img src="http://stage.ibk.co.kr/img/common/new/thumb/thumb_visual01_text_01_230703.png"
+									alt="기업 자금관리서비스 sERP, 경리나라 프로모션" /></p>
+							<p><img src="http://stage.ibk.co.kr/img/common/new/thumb/thumb_visual01_text_02_230703.png"
+									alt="신규 가입시 6개월 동안 이용수수료 15% 할인 받을 수 있습니다" /></p>
+
+							<a href="https://www.serp.co.kr/evntfile/ibk_20190221.html" target="_blank">
+								<span><img src="http://stage.ibk.co.kr/img/common/new/thumb/thumb_visual01_btn.png" alt="자세히 보기" /></span></a>
+
+							<span class="bg_img_up"><img src="http://stage.ibk.co.kr/img/common/new/thumb/thumb_visual01_img_01_230703.png"
+									alt=""></span>
+						</li>
+						<!--첫번째 브랜드이미지 종료 -->
+						<!-- 두번째 브랜드이미지 -->
+						<li class="item03" data-bgcolor="#ffffff">
+							<p><img src="http://stage.ibk.co.kr/img/common/new/thumb/thumb_visual01_text_01_221202.png"
+									alt="급여고객을 위한 프리미엄 혜택관 IBK급여라운지" /></p>
+							<p><img src="http://stage.ibk.co.kr/img/common/new/thumb/thumb_visual01_text_02_221202.png"
+									alt="매월 급여실적에 따라 스탬프 적립 및 경품이벤트 맞춤형 급여 정보를 제공합니다." /></p>
+
+							<a href="/common/navigation.ibk?linkUrl=/financetech/efinance/fintech/pay_lounge.jsp&pageId=SM05160000"
+								target="_blank">
+								<span><img src="http://stage.ibk.co.kr/img/common/new/thumb/thumb_visual01_btn.png" alt="자세히 보기" /></span></a>
+
+							<span class="bg_img_up"><img src="http://stage.ibk.co.kr/img/common/new/thumb/thumb_visual01_img_01_221202.png"
+									alt=""></span>
+						</li>
+						<!--두번째 브랜드이미지 종료 -->
+						<!--세번째 브랜드이미지 -->
+
+						<li class="item03" data-bgcolor="#ffffff">
+							<p><img src="http://stage.ibk.co.kr/img/common/new/thumb/thumb_visual03_text_01_210824.png"
+									alt="기본에 충실한 지속 가능 경영 ESG경영" /></p>
+							<p><img src="http://stage.ibk.co.kr/img/common/new/thumb/thumb_visual03_text_02_210824.png"
+									alt="정책금융 기관이자 기업시민으로서 사회적 기대에 부응하고 주어진 역할에 책임을 다하기 위해 다양한 ESG활동에 주도적으로 참여하고 있습니다." />
+							</p>
+
+							<a href="/common/navigation.ibk?linkUrl=/intro/contrib/esgSrtg01.jsp&pageId=IR06010100"
+								target="_blank">
+								<span><img src="http://stage.ibk.co.kr/img/common/new/thumb/thumb_visual01_btn.png" alt="자세히 보기" /></span></a>
+							<span class="bg_img_up"><img src="http://stage.ibk.co.kr/img/common/new/thumb/thumb_visual03_img_01_211028.png"
+									alt="ESG"></span>
+						</li>
+
+					</ul>
+					<div class="visual-slider-controller direction">
+						<a href="#" class="slider-arrow slider-prev prev"><span class="blind">이전 슬라이드</span></a>
+						<a href="#" class="slider-arrow slider-next next"><span class="blind">다음 슬라이드</span></a>
+						<a href="#" class="slider-behavior slider-stop"><span class="blind">정지</span></a>
+					</div>
+					<div class="visual-slider-nav"></div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- //visual section -->
+
+		<!-- quick nav -->
+		<div class="quick-nav-section">
+			<div class="quick-nav-inner">
+				<h2 class="blind">주요 링크 바로가기</h2>
+				<ul>
+					<li><a onMouseDown="eval('try{_trk_clickTrace( \'EVT\', \'INDEX_바로가기1_계좌조회\' ); }catch(_e){ }');"
+							href="javascript:bankingLogin('C');" sizcache="7" sizset="0" title="새창열림"
+							class="quick-item01"><span>계좌조회</span></a></li>
+					<li><a onMouseDown="eval('try{_trk_clickTrace( \'EVT\', \'INDEX_바로가기1_카드조회\' ); }catch(_e){ }');"
+							href="javascript:bankingLogin('D');" title="새창열림" class="quick-item02"><span>카드조회</span></a>
+					</li>
+					<li><a onMouseDown="eval('try{_trk_clickTrace( \'EVT\', \'INDEX_바로가기1_카드등록\' ); }catch(_e){ }');"
+							href="javascript:bankingLogin('I');" title="새창열림" class="quick-item03"><span>카드등록</span></a>
+					</li>
+					<li><a onMouseDown="eval('try{_trk_clickTrace( \'EVT\', \'INDEX_바로가기1_환율조회\' ); }catch(_e){ }');"
+							href="/fxtr/excRateList.ibk?pageId=SM03020100" class="quick-item04"><span>환율조회</span></a>
+					</li>
+					<li><a onMouseDown="eval('try{_trk_clickTrace( \'EVT\', \'INDEX_바로가기1_소비자포털민원\' ); }catch(_e){ }');"
+							href="/common/navigation.ibk?linkUrl=/customer/counsel/minwon_01.jsp&pageId=CM01080100"
+							class="quick-item05"><span>소비자포털/민원</span></a></li>
+					<li><a onMouseDown="eval('try{_trk_clickTrace( \'EVT\', \'INDEX_바로가기1_상품공시실\' ); }catch(_e){ }');"
+							href="/common/navigation.ibk?linkUrl=/customer/disclosure/disclosure_info.jsp&amp;pageId=CM01030200"
+							class="quick-item06"><span>상품공시실/약관</span></a></li>
+					<li><a onMouseDown="eval('try{_trk_clickTrace( \'EVT\', \'INDEX_바로가기1_서민금융\' ); }catch(_e){ }');"
+							href="https://mybank.ibk.co.kr/uib/jsp/guest/ntr/ntr70/ntr7015/PNTR701535_m.jsp?APLY_EFNC_MENU_ID=P0105070000&SCRE_ID=PNTR701535_m&MENU_DIV=GNB"
+							class="quick-item07"><span>서민금융</span></a></li>
+					<!--<li><a onMouseDown="eval('try{_trk_clickTrace( \'EVT\', \'INDEX_바로가기1_퇴직연금\' ); }catch(_e){ }');" href="/common/navigation.ibk?linkUrl=/mallbiz/pension/pension_guide_01.jsp&pageId=FM04070100" class="quick-item08"><span>IBK퇴직연금</span></a></li>-->
+					<li><a onMouseDown="eval('try{_trk_clickTrace( \'EVT\', \'INDEX_바로가기1_IBK 부동산 매물광장\' ); }catch(_e){ }');"
+							href="/cyber/printListCyber.ibk?pageId=SI05080000&category=12"
+							class="quick-item08"><span>IBK 부동산 매물광장</span></a></li>
+
+				</ul>
+			</div>
+		</div>
+		<!-- //quick nav -->
+
+		<!-- middle contents section -->
+		<div class="md-conts-section" style="min-height:480px">
+			<!-- sub visual -->
+			<div class="sub-visual-slider-box">
+				<h2 class="blind">추천 상품</h2>
+				<div class="slider-wrap" id="subVisualWrap">
+					<div class="mask-box"></div>
+					<div class="visual-slider-controller direction">
+						<a href="#" class="slider-arrow slider-prev prev"><span class="blind">이전 슬라이드</span></a>
+						<a href="#" class="slider-arrow slider-next next"><span class="blind">다음 슬라이드</span></a>
+						<!--<a href="#" class="slider-behavior slider-stop"><span class="blind">정지</span></a>-->
+						<a href="#" class="slider-behavior slider-start"><span class="blind">재생</span></a>
+					</div>
+					<div class="sub-slider-nav visual-slider-nav">
+					</div>
+
+					<ul class="visual-slider">
+						<li>
+							<a
+								href="https://mybank.ibk.co.kr/uib/jsp/guest/ntr/ntr70/ntr7010/PNTR701000_i2.jsp?lncd=01&grcd=11&tmcd=101&pdcd=0080&wvcd=***********&banner=ibk_main_mddl_01111010080">
+								<span class="sub_pic">
+									<img src="http://stage.ibk.co.kr/img/common/new/thumb/thumb_sub_visual01_230420.png" alt="IBK중기근로자급여파킹통장">
+								</span>
+								<b>IBK중기근로자급여파킹통장</b>
+								<span class="sub_tit">중소기업임직원 전용 입출금식통장</span>
+								<span class="sub_text">잔액 300만원까지 연 3%(세전) 금리 제공</span>
+								<span class="sub_btn">자세히보기</span>
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://mybank.ibk.co.kr/uib/jsp/guest/ntr/ntr70/ntr7010/PNTR701000_i2.jsp?lncd=01&grcd=21&tmcd=131&pdcd=0140">
+								<span class="sub_pic">
+									<img src="http://stage.ibk.co.kr/img/common/new/thumb/thumb_sub_visual01_230411.png" alt="IBK혁신창업기업응원통장">
+								</span>
+								<b>IBK혁신창업기업응원통장</b>
+								<span class="sub_tit">혁신창업기업 응원에 개인·기업·기관 모두가<br />동참할 수 있습니다</span> <br />
+								<span class="sub_text">예금수익은 혁신창업기업 지원을 위해 사용됩니다. </span>
+								<span class="sub_btn">자세히보기</span>
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://kiup.ibk.co.kr/uib/jsp/guest/ntr/ntr70/ntr7010/ENTR701000_m.jsp?APLY_EFNC_MENU_ID=E0001010000&SCRE_ID=ENTR701000_m&MENU_DIV=GNB">
+								<span class="sub_pic">
+									<img src="http://stage.ibk.co.kr/img/common/new/thumb/thumb_sub_visual01_230329.png" alt="U일한 입출식 예금">
+								</span>
+								<b>U일한 입출식 예금</b>
+								<span class="sub_tit">법인도 개설 가능한 U일한 비대면 전용 상품</span>
+								<span class="sub_text">최대 연1.0%까지 금리 우대 혜택!!</span>
+								<span class="sub_btn">자세히보기</span>
+							</a>
+						</li>
+
+					</ul>
+
+				</div>
+			</div>
+			<!-- //sub visual -->
+
+			<!-- notify -->
+			<div class="md-conts-right-box notify-slider">
+				<h2>알림</h2>
+				<div class="mask-box"></div>
+				<div class="sub-slider-wrap" id="noticeSliderWrap">
+					<ul class="notify-slider visual-slider">
+						<!-- BDP 태깅 작업 -->
+						<li>
+							<a onclick="bdptag('A');"
+								href="https://www.ibk.co.kr/cyber/newibkDetailCyber.ibk?pageId=IR03010200&category=0&srno=314811"
+								title="새창열림" target="_blank">
+								<img src="http://stage.ibk.co.kr/img/common/new/thumb/bn_mask_img.gif" alt="제70회 희망중소기업포럼 개최및 참가신청"
+									class="bn_mask_img" />
+								<span class="bn_mask_img">
+									<img class="bn_img" src="http://stage.ibk.co.kr/img/common/new/thumb/bn_thumb_notify01_230612.gif"
+										alt="제70회 희망중소기업포럼 개최및 참가신청">
+								</span>
+							</a>
+						</li>
+						<li>
+							<a onclick="bdptag('A');" href="http://ibk.kr/퇴직연금가이드" title="새창열림" target="_blank">
+								<img src="http://stage.ibk.co.kr/img/common/new/thumb/bn_mask_img.gif" alt="IBK퇴직연금" class="bn_mask_img" />
+								<span class="bn_mask_img">
+									<img class="bn_img" src="http://stage.ibk.co.kr/img/common/new/thumb/bn_thumb_notify01_220523.gif"
+										alt="IBK퇴직연금">
+								</span>
+							</a>
+						</li>
+						<li>
+							<a onclick="bdptag('A');"
+								href="https://www.ibk.co.kr/cyber/newibkDetailCyber.ibk?pageId=IR03010200&category=0&srno=314440"
+								title="새창열림" target="_blank">
+								<img src="http://stage.ibk.co.kr/img/common/new/thumb/bn_mask_img.gif" alt="폐업기업 근로자 퇴직연금 수령신청안내"
+									class="bn_mask_img" />
+								<span class="bn_mask_img">
+									<img class="bn_img" src="http://stage.ibk.co.kr/img/common/new/thumb/bn_thumb_notify01_230406.gif"
+										alt="폐업기업 근로자 퇴직연금 수령신청안내">
+								</span>
+							</a>
+						</li>
+						<!-- BDP 태깅 작업 -->
+					</ul>
+					<div class="sub-slider-nav visual-slider-nav">
+					</div>
+				</div>
+			</div>
+			<!-- //notify -->
+
+
+			<!-- event -->
+			<div class="md-conts-right-box notify-event">
+				<h2>이벤트</h2>
+				<div class="mask-box"></div>
+				<div class="sub-slider-wrap" id="eventSliderWrap">
+					<ul class="notify-event visual-slider">
+						<li>
+							<a href="/event/ingDetailEvent.ibk?evnt_srno=103218&evnt_dscd=H&pageId=CM01060100&banner=ibk_main_mddlrhsdevnt_evnt_srno_103218"
+								title="새창열림">
+								<img src="http://stage.ibk.co.kr/img/common/new/thumb/bn_mask_img.gif" alt="YES IBK 환전 이벤트"
+									class="bn_mask_img" />
+								<span class="bn_mask_img">
+									<img class="bn_img" src="http://stage.ibk.co.kr/img/common/new/thumb/bn_thumb_event01_230510.gif"
+										alt="YES IBK 환전 이벤트" />
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="/event/ingDetailEvent.ibk?evnt_srno=103190&evnt_dscd=H&pageId=CM01060100&banner=ibk_main_mddlrhsdevnt_evnt_srno_103190"
+								title="새창열림">
+								<img src="http://stage.ibk.co.kr/img/common/new/thumb/bn_mask_img.gif" alt="온라인셀링 JUMP UP! EVENT"
+									class="bn_mask_img" />
+								<span class="bn_mask_img">
+									<img class="bn_img" src="http://stage.ibk.co.kr/img/common/new/thumb/bn_thumb_event02_230531.gif"
+										alt="온라인셀링 JUMP UP! EVENT" />
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="/event/ingDetailEvent.ibk?evnt_srno=103201&evnt_dscd=H&pageId=CM01060100&banner=ibk_main_mddlrhsdevnt_evnt_srno_103201"
+								title="새창열림">
+								<img src="http://stage.ibk.co.kr/img/common/new/thumb/bn_mask_img.gif" alt="IBK기업은행과 소개팅해요! EVENT"
+									class="bn_mask_img" />
+								<span class="bn_mask_img">
+									<img class="bn_img" src="http://stage.ibk.co.kr/img/common/new/thumb/bn_thumb_event01_230317.gif"
+										alt="IBK기업은행과 소개팅해요! EVENT" />
+								</span>
+							</a>
+						</li>
+					</ul>
+					<div class="sub-slider-nav visual-slider-nav">
+
+					</div>
+				</div>
+			</div>
+			<!-- //event -->
+		</div>
+		<!-- //middle contents section -->
+	</div>
+	<!-- //main contents -->
+
+	<hr />
+
+	<!-- footer -->
+	<div id="footer" role="contentinfo" style="padding:60px 0;background-color:lavender;text-align: center;">
+		#### 푸터영역 ####
+	</div>
+</div>
+
+
+
+</body>
+</html>
