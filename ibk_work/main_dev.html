@@ -30,7 +30,6 @@
 	<script type="text/javascript" src="http://stage.ibk.co.kr/js/rwd/default.js"></script> 
 	<script type="text/javascript" src="http://stage.ibk.co.kr/js/rwd/rwd_ui_new.js"></script> 
 	<script type="text/javascript" src="http://stage.ibk.co.kr/js/rwd/rwd_slider_main.js"></script>  
-	<script type="text/javascript" src="http://stage.ibk.co.kr/js/rwd/jquery.bxslider.min.js"></script><!-- bxSlider 추가--> 
 
 	 
 <script type="text/javascript">
@@ -80,37 +79,42 @@ $(document).ready(function(){
 </script>
 <script type="text/javascript">
 
-	var resizeImgArr =[];
+	// var resizeImgArr =[];
 	var mainSlider;
-	var subSlider;
-	var noticeSlider;
+	var prdSlider;
+	var notifySlider;
 	var eventSlider;
+	var cgSlider;
 
 	$(function(){
 		//메인슬라이드
 		mainSlider = Slider();
-		mainSlider.initHandle({content:'mainSlider', subMotion:true, autoPlay:true, autoPlayTime:6000});
+		mainSlider.initHandle({content:'mainSlider', subMotion:true, autoPlay:true, autoPlayTime:5000});
 
 		//추천상품 슬라이드
-		subSlider = Slider();
-		subSlider.initHandle({content:'prdSlider', subMotion:false, autoPlay:true, autoPlayTime:6000});
+		prdSlider = Slider();
+		prdSlider.initHandle({content:'prdSlider', subMotion:false, autoPlay:true, autoPlayTime:5000});
 
 		//이벤트 슬라이드
 		eventSlider = Slider();
 		eventSlider.initHandle({content:'eventSlider', autoPlay:false});
 		
 		//알림 슬라이드
-		noticeSlider = Slider();
-		noticeSlider.initHandle({content:'notifySlider', autoPlay:false});
+		notifySlider = Slider();
+		notifySlider.initHandle({content:'notifySlider', autoPlay:false});
+		
+		//창공 슬라이드
+		cgSlider = Slider();
+		cgSlider.initHandle({content:'cgSlider', autoPlay:false});
 
 		/*메인비주얼 이미지 수집*/
-		$('#mainSlider .visual-slider img').each(function(i, itm){
-			resizeImgArr.push($(itm));
-		});
+		// $('#mainSlider .visual-slider img').each(function(i, itm){
+		// 	resizeImgArr.push($(itm));
+		// });
 		
-		$('#prdSlider img').each(function(i, itm){
-			resizeImgArr.push($(itm));
-		});
+		// $('#prdSlider img').each(function(i, itm){
+		// 	resizeImgArr.push($(itm));
+		// });
 
 		var resizeInter = null;
 		$(window).on('resize', function(){
@@ -118,8 +122,8 @@ $(document).ready(function(){
 			resizeInter = null;
 			//슬라이더 정지
 			mainSlider.autoSlideStopHandle();
-			subSlider.autoSlideStopHandle();
-			noticeSlider.autoSlideStopHandle();
+			prdSlider.autoSlideStopHandle();
+			notifySlider.autoSlideStopHandle();
 			eventSlider.autoSlideStopHandle();
 			if(resizeInter==null) resizeInter = setTimeout(resizeFn, 300);
 		});
@@ -155,9 +159,10 @@ $(document).ready(function(){
 			op.moing = false;
 			op.inter = null;
 			op.btnstart = op.direction.children('.slider-behavior'); 
-			op.slide.eq(0).children('.step1').eq(0).stop().fadeIn(1000);
-			op.slide.eq(0).children('.step2').eq(1).stop().delay(100).fadeIn(1000);
-			op.slide.eq(0).children('.step3').stop().delay(300).fadeIn(1000);
+			op.slide.eq(0).children('p').eq(0).stop().fadeIn(1000);
+			op.slide.eq(0).children('p').eq(1).stop().delay(100).fadeIn(1000);
+			op.slide.eq(0).children('p').eq(2).stop().delay(200).fadeIn(1000);
+			op.slide.eq(0).children('a').stop().delay(300).fadeIn(1000);
 			op.pager = op.con.find('.visual-slider-nav');
 			op.init = true;
 			op.startX = 0;
@@ -304,9 +309,10 @@ $(document).ready(function(){
 			}, op.slideTime, 'easeInOutExpo').end().eq(op.playNum).stop().show('slide', {direction:dr}, function(){
 					op.moing = false;
 					if(op.subMotion) {
-						$(this).children('.step1').eq(0).stop().fadeIn(600);
-						$(this).children('.step2').eq(1).stop().delay(100).fadeIn(600);
-						$(this).children('.step3').stop().delay(300).fadeIn(600);
+						$(this).children('p').eq(0).stop().fadeIn(1000);
+						$(this).children('p').eq(1).stop().delay(100).fadeIn(1000);
+						$(this).children('p').eq(2).stop().delay(200).fadeIn(1000);
+						$(this).children('a').stop().delay(300).fadeIn(1000);
 					}
 				}, op.slideTime, 'easeInOutExpo');
 
@@ -390,37 +396,25 @@ $(document).ready(function(){
 				</div>
 				<div class="slider-wrap" id="mainSlider">
 					<ul class="visual-slider">
-						<li data-bgcolor="#ffffff">
-							<div class="step1">
-								<p class="sub_tit">모든 기업인터넷뱅킹, 기업스마트뱅킹</p>
-								<p class="main_tit"><strong class="pc_br">기업고객 이체수수료</strong> 조건없이 전면 면제</p>
-							</div>
-							<div class="step2">
-								<p class="sub_desc ">중소기업의 혁신성장, 기업은행이 함께합니다</p>
-							</div>
-							<a class="btn_go_view step3" target="_blank" title="새창열림" href="/cyber/newibkDetailCyber.ibk?pageId=IR03010200&category=0&srno=314722">자세히보기</a>
+						<li>
+							<p class="sub_tit">모든 기업인터넷뱅킹, 기업스마트뱅킹</p>
+							<p class="main_tit"><strong class="pc_br">기업고객 이체수수료</strong> 조건없이 전면 면제</p>
+							<p class="sub_desc">중소기업의 혁신성장, 기업은행이 함께합니다</p>
+							<a class="btn_go_view" target="_blank" title="새창열림" href="/cyber/newibkDetailCyber.ibk?pageId=IR03010200&category=0&srno=314722">자세히보기</a>
 							<div class="main_vi_img"><img src="http://stage.ibk.co.kr/img/main2023/bg_main_slide_01.png" alt=""></div>
 						</li>
-						<li data-bgcolor="#ffffff">
-							<div class="step1">
-								<p class="sub_tit">급여고객을 위한 프리미엄 혜택관</p>
-								<p class="main_tit"><strong>IBK</strong>급여라운지</p>
-							</div>
-							<div class="step2">
-								<p class="sub_desc">매월 급여실적에 따라 스탬프 적립 및 경품이벤트<br> 맞춤형 급여 정보를 제공합니다.</p>
-							</div>
-							<a class="btn_go_view step3" target="_blank" title="새창열림" href="/common/navigation.ibk?linkUrl=/financetech/efinance/fintech/pay_lounge.jsp&pageId=SM05160000">자세히보기</a>
+						<li>
+							<p class="sub_tit">급여고객을 위한 프리미엄 혜택관</p>
+							<p class="main_tit"><strong>IBK</strong>급여라운지</p>
+							<p class="sub_desc">매월 급여실적에 따라 스탬프 적립 및 경품이벤트<br> 맞춤형 급여 정보를 제공합니다.</p>
+							<a class="btn_go_view" target="_blank" title="새창열림" href="/common/navigation.ibk?linkUrl=/financetech/efinance/fintech/pay_lounge.jsp&pageId=SM05160000">자세히보기</a>
 							<div class="main_vi_img"><img src="http://stage.ibk.co.kr/img/main2023/bg_main_slide_02.png" alt=""></div>
 						</li>
-						<li data-bgcolor="#ffffff">
-							<div class="step1">
-								<p class="sub_tit">기본에 충실한 지속 가능 경영</p>
-								<p class="main_tit"><strong>ESG</strong>경영</p>
-							</div>
-							<div class="step2">
-								<p class="sub_desc">정책금융 기관이자 기업시민으로서 사회적 기대에 부응하고 주어진 역할에 책임을 다하기 위해 다양한 ESG활동에 주도적으로 참여하고 있습니다.</p>
-							</div>
-							<a class="btn_go_view step3" target="_blank" title="새창열림" href="/common/navigation.ibk?linkUrl=/intro/contrib/esgSrtg01.jsp&pageId=IR06010100">자세히보기</a>
+						<li>
+							<p class="sub_tit">기본에 충실한 지속 가능 경영</p>
+							<p class="main_tit"><strong>ESG</strong>경영</p>
+							<p class="sub_desc">정책금융 기관이자 기업시민으로서 사회적 기대에 부응하고 주어진 역할에 책임을 다하기 위해 다양한 ESG활동에 주도적으로 참여하고 있습니다.</p>
+							<a class="btn_go_view" target="_blank" title="새창열림" href="/common/navigation.ibk?linkUrl=/intro/contrib/esgSrtg01.jsp&pageId=IR06010100">자세히보기</a>
 							<div class="main_vi_img"><img src="http://stage.ibk.co.kr/img/main2023/bg_main_slide_03.png" alt=""></div>
 						</li>
 					</ul>
