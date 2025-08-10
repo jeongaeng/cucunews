@@ -1,0 +1,43 @@
+/* 노트북 & PC (해상도 1024px)*/ 
+@media all and (min-width:1024px) {
+
+} 
+
+/* 테블릿 가로, 테블릿 세로 (해상도 768px ~ 1023px)*/ 
+@media all and (min-width:768px) and (max-width:1023px) {
+
+} 
+
+/* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/ 
+@media all and (max-width:767px) {
+
+    .header{position:fixed;width:100%;}
+}
+
+ .Navbar-menu {
+    line-height: 1.6rem;
+    position: fixed;
+    top: $l-Navbar-size;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    width: 0%;
+    overflow-y: auto;
+    visibility: hidden;
+    padding: unitSize(3) 0;
+    background-color: rgba($c-Navbar-bg, 0.92);
+    opacity: 0;
+    transition-property: opacity, visibility, width;
+    transition-duration: 0.35s, 0.25s, 0.25s;
+    transition-delay: 0.1s;
+    .Navbar-menu-major {
+      flex-grow: 1;
+    }
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
+      width: 100%;
+      transition-duration: 0.15s, 0.25s, 0.25s;
+    }
+  }
