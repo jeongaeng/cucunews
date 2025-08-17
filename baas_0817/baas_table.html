@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형 데이터 테이블</title>
+
+<style>
+html{font-size:10px}
+*{margin:0;padding:0;box-sizing:border-box;}
+
+.wrap{width:880px;margin:40px auto}
+
+.data_table table{table-layout:fixed;width:100%;border-collapse:collapse;}
+.data_table table th{padding:12px 0;border-top:1px solid #E9EAEB;border-bottom:1px solid #E9EAEB;background-color:#FAFAFA;color:#535862;font-size:1.4rem;font-weight:600;line-height:2rem;}
+.data_table table td{ padding:12px 0;border-bottom:1px solid #E9EAEB;color:#535862;font-size:1.4rem;font-weight:400;line-height:2rem;text-align:center;}
+.data_table table td.no{color:#202224;font-weight:500;}
+
+
+/* responsive */
+@media only screen and (max-width:760px), (min-device-width:768px) and (max-device-width:1024px) {
+    .wrap{width:100%;margin:0;padding:24px 20px;}
+
+    /* Force table to not be like tables anymore */
+    .data_table table, 
+    .data_table table thead, 
+    .data_table table tbody, 
+    .data_table table th, 
+    .data_table table td, 
+    .data_table table tr{
+        display:block;
+    }
+    .data_table table thead tr{position:absolute;top:-9999px;left:-9999px;} /* Hide table headers (but not display:none;, for accessibility) */
+    .data_table table tr{position:relative;margin-top:16px;padding:68px 20px 20px;border:1px solid #E1E3EA;-webkit-border-radius:16px;border-radius:16px;}
+    .data_table table tr:first-child{margin-top:0;}
+    .data_table table td{position:relative;margin-top:6px;padding-left:60%;padding-top:0;padding-bottom:0;border:none;color:#202224;font-weight:600;text-align:right;/*background:aliceblue;*/}/* Behave  like a "row" */
+    .data_table table td:first-child{margin-top:0;}
+    .data_table table td:before{position:absolute;top:0;left:0;width:40%;color:#61676E;font-size:1.4rem;font-weight:500;line-height:2rem;white-space:nowrap;text-align:left;}/* Now like a table header */
+
+    .data_table table td.no{position:absolute;top:16px;left:24px;width:calc(100% - 40px);margin-bottom:16px;padding-left:0;padding-bottom:16px;border-bottom:1px solid #E9EAEB;color:#61676E;text-align:left;}
+    .data_table table td.no:before{font-weight:500;font-size:0;}
+    .data_table table td.datetime{position:absolute;top:16px;right:20px;margin-top:0;padding-left:10%;}
+    .data_table table td.datetime:before{display:none;}
+
+    /* Label the data */
+    .data_table table td:nth-of-type(1):before{content:'No';}
+    .data_table table td:nth-of-type(2):before{content:'가맹점명';}
+    .data_table table td:nth-of-type(3):before{content:'서비스';}
+    .data_table table td:nth-of-type(4):before{content:'결제금액';}
+    .data_table table td:nth-of-type(5):before{content:'처리상태';}
+    .data_table table td:nth-of-type(6):before{content:'거래단계';}
+    .data_table table td:nth-of-type(7):before{content:'거래일시';}
+}
+
+
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+    <div class="data_table">
+        <table>
+            <colgroup>
+                <col style="width:8%;">
+                <col style="width:auto;">
+                <col style="width:14%;">
+                <col style="width:14%;">
+                <col style="width:12%;">
+                <col style="width:16%;">
+                <col style="width:18%;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">가맹점명</th>
+                    <th scope="col">서비스</th>
+                    <th scope="col">결제금액</th>
+                    <th scope="col">처리상태</th>
+                    <th scope="col">거래단계</th>
+                    <th scope="col">거래일시</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="no">10</td>
+                    <td>을지로 10호점</td>
+                    <td>자동결제</td>
+                    <td>3,000,000</td>
+                    <td>요청</td>
+                    <td>제휴사 &rarr;BaaS</td>
+                    <td class="datetime">2015-07-21 02:22:33</td>
+                </tr>
+                <tr>
+                    <td class="no">9</td>
+                    <td>을지로 10호점</td>
+                    <td>자동결제</td>
+                    <td>3,000,000</td>
+                    <td>요청</td>
+                    <td>제휴사 &rarr;BaaS</td>
+                    <td class="datetime">2015-07-21 02:22:33</td>
+                </tr>
+                <tr>
+                    <td class="no">8</td>
+                    <td>을지로 10호점</td>
+                    <td>자동결제</td>
+                    <td>3,000,000</td>
+                    <td>요청</td>
+                    <td>제휴사 &rarr;BaaS</td>
+                    <td class="datetime">2015-07-21 02:22:33</td>
+                </tr>
+                <tr>
+                    <td class="no">7</td>
+                    <td>을지로 10호점</td>
+                    <td>자동결제</td>
+                    <td>3,000,000</td>
+                    <td>요청</td>
+                    <td>제휴사 &rarr;BaaS</td>
+                    <td class="datetime">2015-07-21 02:22:33</td>
+                </tr>
+                <tr>
+                    <td class="no">6</td>
+                    <td>을지로 10호점</td>
+                    <td>자동결제</td>
+                    <td>3,000,000</td>
+                    <td>요청</td>
+                    <td>제휴사 &rarr;BaaS</td>
+                    <td class="datetime">2015-07-21 02:22:33</td>
+                </tr>
+                <tr>
+                    <td class="no">5</td>
+                    <td>을지로 10호점</td>
+                    <td>자동결제</td>
+                    <td>3,000,000</td>
+                    <td>요청</td>
+                    <td>제휴사 &rarr;BaaS</td>
+                    <td class="datetime">2015-07-21 02:22:33</td>
+                </tr>
+                <tr>
+                    <td class="no">4</td>
+                    <td>을지로 10호점</td>
+                    <td>자동결제</td>
+                    <td>3,000,000</td>
+                    <td>요청</td>
+                    <td>제휴사 &rarr;BaaS</td>
+                    <td class="datetime">2015-07-21 02:22:33</td>
+                </tr>
+                <tr>
+                    <td class="no">3</td>
+                    <td>을지로 10호점</td>
+                    <td>자동결제</td>
+                    <td>3,000,000</td>
+                    <td>요청</td>
+                    <td>제휴사 &rarr;BaaS</td>
+                    <td class="datetime">2015-07-21 02:22:33</td>
+                </tr>
+                <tr>
+                    <td class="no">2</td>
+                    <td>을지로 10호점</td>
+                    <td>자동결제</td>
+                    <td>3,000,000</td>
+                    <td>요청</td>
+                    <td>제휴사 &rarr;BaaS</td>
+                    <td class="datetime">2015-07-21 02:22:33</td>
+                </tr>
+                <tr>
+                    <td class="no">1</td>
+                    <td>을지로 10호점</td>
+                    <td>자동결제</td>
+                    <td>3,000,000</td>
+                    <td>요청</td>
+                    <td>제휴사 &rarr;BaaS</td>
+                    <td class="datetime">2015-07-21 02:22:33</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
