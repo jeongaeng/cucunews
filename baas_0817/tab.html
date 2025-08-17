@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Tab Menu</title>
+    <style>
+        /* 스타일링은 간단한 예시를 위해 최소한으로 유지. */
+        .tab-button {
+            cursor: pointer;
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div role="tablist">
+        <!-- 탭 버튼 목록 -->
+        <button role="tab" aria-controls="tab-content-1" class="tab-button" tabindex="0">Tab 1</button>
+        <button role="tab" aria-controls="tab-content-2" class="tab-button" tabindex="0">Tab 2</button>
+        <button role="tab" aria-controls="tab-content-3" class="tab-button" tabindex="0">Tab 3</button>
+    </div>
+
+    <!-- 탭 내용 -->
+    <div id="tab-content-1" role="tabpanel" class="tab-content">
+        <p>This is the content for Tab 1.</p>
+    </div>
+    <div id="tab-content-2" role="tabpanel" class="tab-content">
+        <p>This is the content for Tab 2.</p>
+    </div>
+    <div id="tab-content-3" role="tabpanel" class="tab-content">
+        <p>This is the content for Tab 3.</p>
+    </div>
+
+    <script>
+        // JavaScript를 사용하여 탭을 관리
+        const tabButtons = document.querySelectorAll('[role="tab"]');
+        const tabContents = document.querySelectorAll('[role="tabpanel"]');
+
+        tabButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                // 모든 탭 버튼과 탭 콘텐츠를 초기화
+                tabButtons.forEach((btn) => {
+                    btn.classList.remove("active");
+                    btn.setAttribute("aria-selected", "false");
+                });
+                tabContents.forEach((content) => {
+                    content.classList.remove("active");
+                });
+
+                // 선택한 탭 버튼과 연결된 탭 콘텐츠를 활성화
+                const controlId = button.getAttribute("aria-controls");
+                const tabContent = document.getElementById(controlId);
+                button.classList.add("active");
+                button.setAttribute("aria-selected", "true");
+                tabContent.classList.add("active");
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body {font-size:62.5%;}
+        *, *::before, *::after {box-sizing:border-box; margin:0; padding:0;}
+        ul, ol {list-style:none;}
+        button {border:0; background:inherit; cursor:pointer;}
+
+        main {max-width:100rem; margin:10rem auto 0;}
+
+        .tab_list {display:flex;}
+        .tab_list .item {padding:0.5rem 1rem 0.5rem; background:#fff; border-bottom:0.2rem solid rgb(107, 107, 107);}
+        .tab_list .item + .item {margin-left:1rem;}
+
+        .tab_list .item.active {background:rgba(255, 111, 0, 0.2); border-bottom-color:rgb(255, 111, 0)}
+
+        .tab_conts {margin-top:2rem; border:1px solid #ddd; font-size:1.6rem;}
+        .tab_conts .tab_panel {display:none;  padding:1rem;}
+        .tab_conts .tab_panel.active {display:block;}
+        
+        .tab_conts .tab_panel:focus, button:focus {outline:0.2rem solid rgb(0, 99, 248);}
+
+        .btn {margin-top:2rem; padding:1rem; border:1px solid #ddd; background:#eee;}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <main>
+            <div class="tabs">
+                <div role="tablist" class="tab_list">
+                    <button type="button" role="tab" aria-controls="tabPanel01" id="tabList01" class="item"><span>탭1</span></button>
+                    <button type="button" role="tab" aria-controls="tabPanel02" id="tabList02" class="item"><span>탭2</span></button>
+                    <button type="button" role="tab" aria-controls="tabPanel03" id="tabList03" class="item"><span>탭3</span></button>
+                    <button type="button" role="tab" aria-controls="tabPanel04" id="tabList04" class="item"><span>탭4</span></button>
+                </div>
+                <div class="tab_conts">
+                    <div role="tabpanel" aria-labelledby="tabList01" id="tabPanel01" class="tab_panel"><h2>tab1</h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo ut tempore eveniet aliquam sapiente at provident labore sit ipsa, dolores deleniti soluta nulla maxime corrupti fuga eos adipisci voluptas itaque!</div>
+                    <div role="tabpanel" aria-labelledby="tabList02" id="tabPanel02" class="tab_panel"><h2>tab2</h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe reiciendis odit sint, perspiciatis quisquam vero facilis libero. Est quae, suscipit aut, voluptate quis quia voluptatum reiciendis odio ut nostrum repellendus.</div>
+                    <div role="tabpanel" aria-labelledby="tabList03" id="tabPanel03" class="tab_panel"><h2>tab3</h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt laudantium eveniet veritatis, ducimus temporibus dolores, omnis totam rem, quod eaque sed. Maiores reprehenderit consectetur error, omnis reiciendis quod quos minima!</div>
+                    <div role="tabpanel" aria-labelledby="tabList04" id="tabPanel04" class="tab_panel"><h2>tab4</h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione distinctio, asperiores hic veritatis in perspiciatis magni id ea quo repellendus non atque eos doloribus minus debitis! Dolorum magnam delectus adipisci.</div>
+                </div>
+            </div>
+            <button type="button" class="btn">button</button>
+        </main>
+    </div>
+    <script>
+        $(function(){
+            var tabs = $('.tabs'),
+                tabList = tabs.find('.tab_list').find('.item'),
+                tabConts = tabs.find('.tab_conts'),
+                tabPanel = tabConts.find('.tab_panel');
+
+            tabList.on('click', function(){
+                var $this = $(this),
+                    $targetIndex = $this.index();
+
+                $this.addClass('active').siblings().removeClass('active');
+                tabPanel.eq($targetIndex).addClass('active').siblings().removeClass('active');
+
+                // wai-aria
+                $this.attr({'aria-selected': true, 'tabindex': 0}).siblings().attr({'aria-selected': false, 'tabindex': -1});
+            })
+            .on('keyup', function(e){
+                var $this = $(this),
+                    keycode = e.keycode || e.which; // // keycode 명령어에 반응하지 않는 브라우저도 있어서, 다양한 브라우저에 대응하기 위해서 keycode와 which를 같이 사용
+
+                if(keycode == 39 || keycode == 40){ // 오른쪽 방향키 이거나 아래 방향키
+                    console.log('right or down');
+
+                    var nextTab = $this.next(),
+                        nextTabSiblings = nextTab.siblings(),
+                        thisPanel = $('#' + nextTab.attr('aria-controls'));
+
+                    nextTab.addClass('active').attr({'aria-selected': true, 'tabindex': 0}).focus();
+                    nextTabSiblings.removeClass('active').attr({'aria-selected': false, 'tabindex': -1});
+
+                    thisPanel.addClass('active').siblings().removeClass('active');
+
+                    // tab list 마지막 요소에서
+                    var lastTab = $this.last().attr('aria-controls'),
+                        lastPanel = tabPanel.last().attr('id');
+
+                    if(lastTab == lastPanel){
+                        var fisrtTab = tabList.first(),
+                            firstPanel = tabPanel.first();
+
+                        fisrtTab.addClass('active').attr({'aria-selected': true, 'tabindex': 0}).focus();
+                        fisrtTab.siblings().removeClass('active').attr({'aria-selected': false, 'tabindex': -1});
+                        firstPanel.addClass('active').siblings().removeClass('active');
+                    }
+                }else if(keycode == 37 || keycode == 38){ // 왼쪽 방향키 이거나 위쪽 방향키
+                    console.log('left or up');
+
+                    var prevTab = $this.prev(),
+                        prevTabSiblings = prevTab.siblings(),
+                        thisPanel = $('#' + prevTab.attr('aria-controls'));
+
+                    prevTab.addClass('active').attr({'aria-selected': true, 'tabindex': 0}).focus();
+                    prevTabSiblings.removeClass('active').attr({'aria-selected': false, 'tabindex': -1});
+
+                    thisPanel.addClass('active').siblings().removeClass('active');
+
+                    // tab list 처음 요소에서
+                    var firstTab = $this.first().attr('aria-controls'),
+                        firstPanel = tabPanel.first().attr('id');
+
+                    if(firstTab == firstPanel){
+                        var lastTab = tabList.last(),
+                            lastPanel = tabPanel.last();
+
+                        lastTab.addClass('active').attr({'aria-selected': true, 'tabindex': 0}).focus();
+                        lastTab.siblings().removeClass('active').attr({'aria-selected': false, 'tabindex': -1});
+                        lastPanel.addClass('active').siblings().removeClass('active');
+                    }
+                }
+            });
+
+            tabList.eq(0).trigger('click'); // 페이지가 로딩이 되면 첫번 째 탭이 클릭되어 있음(즉, active 클래스 들어가 있음)
+
+            // Accessibility Set
+            function acc(){
+                if(!tabList.first()){
+                    $(this).attr({'aria-selected': false, 'tabindex': -1});
+                }else{
+                    $(this).attr({'aria-selected': true, 'tabindex': 0});
+                }
+                
+                tabPanel.attr('tabindex', 0);
+            }
+            acc();
+        })
+    </script>
+</body>
+</html>
